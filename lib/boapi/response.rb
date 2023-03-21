@@ -24,6 +24,10 @@ module Boapi
       !success?
     end
 
+    def status
+      raw_response.status
+    end
+
     def raw
       raw_response
     end

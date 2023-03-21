@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require 'faraday'
+require 'faraday_middleware'
+require 'ostruct'
 
 module Boapi
   class Client
@@ -46,12 +48,14 @@ module Boapi
 
     def build_connection
       Faraday.new(Boapi.configuration.api_host) do |conn|
-        conn.request :authorization, :basic, account_id, account_secret
+        conn.response :logger
+        conn.basic_auth(account_id, account_secret)
         conn.request :json
         conn.response :json
-        conn.proxy Boapi.proxy if Boapi.proxy
-
-        conn.headers = { 'Content-Type' => 'application/json' }
+        conn.proxy Boapi.configuration.proxy if Boapi.configuration.proxy
+        conn.headers['Content-Type'] = 'application/json'
+        conn.headers['Accept'] = 'application/json'
+        conn.adapter Faraday.default_adapter
       end
     end
 

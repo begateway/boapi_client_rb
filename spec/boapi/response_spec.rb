@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Response' do
   subject { Boapi::Response.new(raw_response) }
+
   context 'when successful' do
     let(:payload) { { 'count' => 100 } }
     let(:raw_response) {

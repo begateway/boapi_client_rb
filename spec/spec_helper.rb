@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 require 'boapi'
+require 'webmock/rspec'
+
+WebMock.disable_net_connect!(allow_localhost: false)
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

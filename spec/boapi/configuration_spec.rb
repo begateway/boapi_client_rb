@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Configuration' do
   subject { Boapi.configuration }
 

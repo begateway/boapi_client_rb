@@ -32,7 +32,10 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   # Uncomment to register a new dependency of your gem
-  spec.add_dependency 'faraday', '~> 2.7.0'
+  spec.add_dependency 'faraday', '> 0.7.6', '< 1.0'
+  spec.add_dependency 'faraday_middleware', '> 0.1', '< 1.0'
+  spec.add_development_dependency 'webmock', '~> 3.18.1'
+
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html
