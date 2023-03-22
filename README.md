@@ -81,6 +81,19 @@ Transactions list
 > {"pagination"=>{"date_from"=>"2023-02-20T09:02:54.516000Z", "date_to"=>"2023-02-20T09:02:54.516000Z", "date_type"=>"created_at", "has_next_page"=>true, "next_date"=>"2023-02-20T09:36:15.175000Z"}, "transactions"=>[{"amount"=>123, "created_at"=>"2023-02-270T09:12:54.516000Z", "currency"=>"trx_cur", "merchant_id"=>123, "paid_at"=>"2023-02-12T09:02:59.669000Z", "shop_id"=>123, "status"=>"trx_status", "type"=>"trx_type", "uid"=>"xxxxxxx-fa21-xxxx-xxxx-xxxxeec8661f"}]}
 ```
 
+Transactions list with response params
+
+```
+> params = params = { response_parameters: "query {transactions {uid shop_id provider_raw { ref_id } } }", filter: { date_from: '2023-01-20T00:00:00', date_to: '2023-03-22T00:00:00', date_type: 'paid_at' }, options: { limit: 1, time_zone: 'Europe/Berlin' } }
+> response = client.transactions_list(params)
+> response.status 
+> 200
+> response.success?
+> true
+> response.data
+> {"pagination"=>{"date_from"=>"2023-02-20T09:02:59.669000Z", "date_to"=>"2023-02-20T09:02:59.669000Z", "date_type"=>"paid_at", "has_next_page"=>true, "next_date"=>"2023-02-20T09:36:15.994000Z"}, "transactions"=>[{"paid_at"=>"2023-02-20T09:12:34.567000Z", "provider_raw"=>{"ref_id"=>nil}, "shop_id"=>123, "uid"=>"e4800e1b-xxxx-xxxx-ae25-16f1xxxx661f"}]}
+```
+
 Errors
 
 Unauthorized
