@@ -8,6 +8,12 @@ Install the gem and add to the application's Gemfile by executing:
 
     $ bundle add boapi --git "git@github.com:begateway/boapi_client_rb.git"
 
+or add to Gemfile manually
+
+```
+gem 'boapi', git: 'git@github.com:begateway/boapi_client_rb.git'
+```
+
 ## Usage
 
 Add config/initializers/boapi.rb
@@ -75,6 +81,47 @@ Transactions list
 > {"pagination"=>{"date_from"=>"2023-02-20T09:02:54.516000Z", "date_to"=>"2023-02-20T09:02:54.516000Z", "date_type"=>"created_at", "has_next_page"=>true, "next_date"=>"2023-02-20T09:36:15.175000Z"}, "transactions"=>[{"amount"=>123, "created_at"=>"2023-02-270T09:12:54.516000Z", "currency"=>"trx_cur", "merchant_id"=>123, "paid_at"=>"2023-02-12T09:02:59.669000Z", "shop_id"=>123, "status"=>"trx_status", "type"=>"trx_type", "uid"=>"xxxxxxx-fa21-xxxx-xxxx-xxxxeec8661f"}]}
 ```
 
+Errors
+
+Unauthorized
+
+```
+> client = Boapi::Client.new(account_id: boapi_account_id, account_secret: wrong_boapi_account_secret)
+> response = client.currencies
+> response.success?
+> false
+> response.error?
+> true
+> response.status
+> 401
+> response.error
+> {"code"=>"unauthorized", "friendly_message"=>"You can't have access to this area", "help"=>"https://doc.ecomcharge.com/codes/unauthorized", "message"=>"Unauthorized"}
+```
+
+Invalid params
+
+```
+> params = { filter: {date_to: '2023-03-22T00:00:00' }, options: { limit: 1 } }
+> response = client.transactions_list(params)
+> response.status 
+> 422
+> response.success?
+> false
+> response.error
+> {"code"=>"unprocessable_entity", "friendly_message"=>"Date_from is required.", "help"=>"https://doc.ecomcharge.com/codes/unprocessable_entity", "message"=>"Unprocessable entity"}
+```
+
+Connection errors
+
+```
+> response = client.health
+> response.status 
+> 500
+> response.success?
+> false
+> response.error
+> {"code"=>"faraday_error", "friendly_message"=>"We're sorry, but something went wrong", "message"=>"Failed to open TCP connection to https://example.com (getaddrinfo: nodename nor servname provided, or not known)"}
+```
 
 ## Development
 
