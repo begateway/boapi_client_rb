@@ -2,7 +2,6 @@
 
 require 'faraday'
 require 'faraday_middleware'
-require 'ostruct'
 
 module Boapi
   class Client
@@ -46,6 +45,7 @@ module Boapi
 
     private
 
+    # rubocop:disable Metrics/AbcSize
     def build_connection
       Faraday.new(Boapi.configuration.api_host) do |conn|
         conn.response :logger
@@ -59,9 +59,11 @@ module Boapi
       end
     end
 
+    # rubocop:enable Metrics/AbcSize
+
     # rubocop:disable Metrics/MethodLength
     def build_error_body(error_message)
-      OpenStruct.new(
+      Struct.new(:status, :success?, :body, keyword_init: true).new(
         status: 500,
         body: {
           'error' => {
@@ -73,5 +75,7 @@ module Boapi
         success?: false
       )
     end
+
+    # rubocop:enable Metrics/MethodLength
   end
 end

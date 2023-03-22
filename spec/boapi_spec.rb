@@ -2,6 +2,6 @@
 
 RSpec.describe Boapi do
   it 'has a version number' do
-    expect(Boapi::VERSION).not_to be nil
+    expect(Boapi::VERSION).not_to be_nil
   end
 end
