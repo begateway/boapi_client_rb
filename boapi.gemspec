@@ -5,7 +5,7 @@ require_relative 'lib/boapi/version'
 Gem::Specification.new do |spec|
   spec.name = 'boapi'
   spec.version = Boapi::VERSION
-  spec.authors = ['Ecomcharge']
+  spec.authors = ['eComCharge']
   spec.email = ['info@ecomcharge.com']
 
   spec.summary = 'Ruby client for boapi service.'
@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.license = 'MIT'
   spec.required_ruby_version = '>= 2.6.0'
 
-  spec.metadata['allowed_push_host'] = "TODO: Set to your gem server 'https://example.com'"
+  spec.metadata['allowed_push_host'] = 'https://rubygems.org'
 
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = 'https://github.com/begateway/boapi_client_rb'
@@ -35,7 +35,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'faraday', '> 0.7.6', '< 1.0'
   spec.add_dependency 'faraday_middleware', '> 0.1', '< 1.0'
   spec.add_development_dependency 'webmock', '~> 3.18.1'
-
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html

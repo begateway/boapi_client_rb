@@ -10,7 +10,71 @@ Install the gem and add to the application's Gemfile by executing:
 
 ## Usage
 
-TODO: Write usage instructions here
+Add config/initializers/boapi.rb
+
+```
+Boapi.configure do |c|
+  c.api_host = 'https://example.com' # required
+  c.proxy = URI::HTTP.build(host: env['PROXY_HOST'], port: env['PROXY_PORT']).to_s # optional
+end
+```
+
+Create client
+
+`client = Boapi::Client.new(account_id: boapi_account_id, account_secret: boapi_account_secret)`
+
+Make calls to boapi service
+
+Health
+
+```
+> response = client.health
+> response.status 
+> 200
+> response.success?
+> true
+> response.data
+> {"click"=>true, "healthy"=>true, "pg"=>true, "rabbitmq"=>true, "redis"=>true, "version"=>"1.2.34"}
+```
+
+Currencies
+
+```
+> response = client.currencies
+> response.status 
+> 200
+> response.success?
+> true
+> response.data
+> ["BYN", "USD"]
+```
+
+Transactions count
+
+```
+> params = { filter: { date_from: '2023-01-20T00:00:00', date_to: '2023-03-22T00:00:00' } }
+> response = client.transactions_count(params)
+> response.status 
+> 200
+> response.success?
+> true
+> response.data
+> {"count"=>1506}
+```
+
+Transactions list
+
+```
+> params = { filter: { date_from: '2023-01-20T00:00:00', date_to: '2023-03-22T00:00:00' }, options: { limit: 1 } }
+> response = client.transactions_list(params)
+> response.status 
+> 200
+> response.success?
+> true
+> response.data
+> {"pagination"=>{"date_from"=>"2023-02-20T09:02:54.516000Z", "date_to"=>"2023-02-20T09:02:54.516000Z", "date_type"=>"created_at", "has_next_page"=>true, "next_date"=>"2023-02-20T09:36:15.175000Z"}, "transactions"=>[{"amount"=>123, "created_at"=>"2023-02-270T09:12:54.516000Z", "currency"=>"trx_cur", "merchant_id"=>123, "paid_at"=>"2023-02-12T09:02:59.669000Z", "shop_id"=>123, "status"=>"trx_status", "type"=>"trx_type", "uid"=>"xxxxxxx-fa21-xxxx-xxxx-xxxxeec8661f"}]}
+```
+
 
 ## Development
 

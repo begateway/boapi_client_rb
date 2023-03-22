@@ -7,6 +7,7 @@ RSpec.describe 'Client' do
   context 'without authentication' do
     let(:url) { "#{Boapi.configuration.api_host}/api/v1/currencies" }
     subject { Boapi::Client.new(account_id: account_id, account_secret: rand(10).to_s).currencies }
+
     before do
       stub_request(:get, url).to_return(status: 401,
                                         body: '{"error":{"code":"unauthorized","friendly_message":"You can\'t have access to this area","help":"https://doc.ecomcharge.com/codes/unauthorized","message":"Unauthorized"}}')
@@ -21,13 +22,16 @@ RSpec.describe 'Client' do
                                     'friendly_message' => "You can't have access to this area", 'help' => 'https://doc.ecomcharge.com/codes/unauthorized', 'message' => 'Unauthorized' })
     end
   end
+
   context '.health' do
     let(:url) { "#{Boapi.configuration.api_host}/api/health" }
     subject { Boapi::Client.new(account_id: account_id, account_secret: account_secret).health }
+
     before do
       stub_request(:get, url).to_return(status: 200,
                                         body: '{"data":{"click":true,"healthy":true,"pg":true,"rabbitmq":true,"redis":true,"version":"0.2.13"}}')
     end
+
     it 'returns successful response' do
       expect(subject.status).to be 200
 
@@ -41,10 +45,12 @@ RSpec.describe 'Client' do
   context '.currencies' do
     let(:url) { "#{Boapi.configuration.api_host}/api/v1/currencies" }
     subject { Boapi::Client.new(account_id: account_id, account_secret: account_secret).currencies }
+
     before do
       stub_request(:get, url).to_return(status: 200,
                                         body: '{"data":["BYN", "USD"]}')
     end
+
     it 'returns successful response' do
       expect(subject.status).to be 200
 
@@ -76,10 +82,12 @@ RSpec.describe 'Client' do
 
     context 'when params given' do
       let(:params) { { filter: { date_from: '2023-01-20T00:00:00', date_to: '2023-03-22T00:00:00' } } }
+
       before do
         stub_request(:post, url).to_return(status: 200,
                                            body: '{"data":{"count":1486}}')
       end
+
       it 'returns successful response' do
         expect(subject.status).to be 200
 
@@ -88,7 +96,6 @@ RSpec.describe 'Client' do
         expect(subject.data).to eq({ 'count' => 1486 })
       end
     end
-
   end
 
   context '.transactions_list' do
@@ -97,6 +104,7 @@ RSpec.describe 'Client' do
 
     context 'when params given' do
       let(:params) { { filter: { date_from: '2023-01-20T00:00:00', date_to: '2023-03-22T00:00:00' }, options: { limit: 3 } } }
+
       before do
         stub_request(:post, url)
           .to_return(status: 200,
@@ -105,6 +113,7 @@ RSpec.describe 'Client' do
                                                      {"amount":12346, "created_at":"2023-02-20T09:36:15.175000Z", "currency":"BYN", "merchant_id":1, "paid_at":"2023-02-20T09:36:15.994000Z", "shop_id":142, "status":"failed", "type":"payment", "uid":"5e499f43-74ca-4f95-a722-57dfc8e9adcc"},
                                                      {"amount":100, "created_at":"2023-02-20T11:13:43.748000Z", "currency":"BYN", "merchant_id":55, "paid_at":null, "shop_id":296, "status":"successful", "type":"tokenization", "uid":"a1b993aa-d340-4d52-a0ce-92e5a30ab6a6"}]}}')
       end
+
       it 'returns successful response' do
         expect(subject.status).to be 200
 
@@ -116,6 +125,5 @@ RSpec.describe 'Client' do
                                                         { 'amount' => 100, 'created_at' => '2023-02-20T11:13:43.748000Z', 'currency' => 'BYN', 'merchant_id' => 55, 'paid_at' => nil, 'shop_id' => 296, 'status' => 'successful', 'type' => 'tokenization', 'uid' => 'a1b993aa-d340-4d52-a0ce-92e5a30ab6a6' }] })
       end
     end
-
   end
 end

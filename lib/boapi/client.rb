@@ -55,7 +55,7 @@ module Boapi
         conn.proxy Boapi.configuration.proxy if Boapi.configuration.proxy
         conn.headers['Content-Type'] = 'application/json'
         conn.headers['Accept'] = 'application/json'
-        conn.adapter Faraday.default_adapter
+        conn.adapter Boapi.configuration.adapter
       end
     end
 

@@ -17,7 +17,7 @@ module Boapi
     def initialize
       @api_host = DEFAULT_API_HOST
       @proxy = nil
-      @adapter = :httpclient
+      @adapter = Faraday.default_adapter
     end
   end
 end
