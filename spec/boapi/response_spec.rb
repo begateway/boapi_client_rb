@@ -30,7 +30,7 @@ RSpec.describe 'Response' do
     end
 
     it 'returns raw' do
-      expect(response.raw).to eql raw_response
+      expect(response.raw_response).to eql raw_response
     end
   end
 
@@ -66,8 +66,8 @@ RSpec.describe 'Response' do
       expect(response.data).to be_nil
     end
 
-    it 'returns raw' do
-      expect(response.raw).to eql raw_response
+    it 'returns raw response' do
+      expect(response.raw_response).to eql raw_response
     end
   end
 end

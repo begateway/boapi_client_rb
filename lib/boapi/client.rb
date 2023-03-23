@@ -33,6 +33,8 @@ module Boapi
         begin
           connection.public_send(method, path, params)
         rescue Faraday::Error => e
+          Boapi.configuration.logger.error("BOAPI::CLIENT::FARADAY::ERROR :: #{e}")
+
           build_error_body(e)
         end
 

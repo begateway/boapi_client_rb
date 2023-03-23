@@ -27,9 +27,5 @@ module Boapi
     def status
       raw_response.status
     end
-
-    def raw
-      raw_response
-    end
   end
 end
