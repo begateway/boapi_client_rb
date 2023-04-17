@@ -22,6 +22,9 @@ Add config/initializers/boapi.rb
 Boapi.configure do |c|
   c.api_host = 'https://example.com' # required
   c.proxy = URI::HTTP.build(host: env['PROXY_HOST'], port: env['PROXY_PORT']).to_s # optional
+  c.timeout = 5 #faraday timeout, default: 5
+  c.open_timeout = 10 #faraday open_timeout, default: 10
+  c.faraday_options #faraday connection opts, ex {ssl: {verify: false}} # default: {}
 end
 ```
 
