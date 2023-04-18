@@ -48,8 +48,9 @@ module Boapi
     private
 
     # rubocop:disable Metrics/AbcSize
+    # rubocop:disable Metrics/MethodLength
     def build_connection
-      Faraday.new(Boapi.configuration.api_host) do |conn|
+      Faraday.new(Boapi.configuration.api_host, Boapi.configuration.faraday_opts) do |conn|
         conn.response :logger
         conn.basic_auth(account_id, account_secret)
         conn.request :json
@@ -58,12 +59,12 @@ module Boapi
         conn.headers['Content-Type'] = 'application/json'
         conn.headers['Accept'] = 'application/json'
         conn.adapter Boapi.configuration.adapter
+        conn.options.timeout = Boapi.configuration.timeout
+        conn.options.open_timeout = Boapi.configuration.open_timeout
       end
     end
 
     # rubocop:enable Metrics/AbcSize
-
-    # rubocop:disable Metrics/MethodLength
     def build_error_body(error_message)
       Struct.new(:status, :success?, :body, keyword_init: true).new(
         status: 500,

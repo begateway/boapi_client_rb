@@ -14,13 +14,16 @@ module Boapi
   class Configuration
     DEFAULT_API_HOST = 'http://localhost:4001'
 
-    attr_accessor :api_host, :proxy, :adapter, :logger
+    attr_accessor :api_host, :proxy, :adapter, :logger, :timeout, :open_timeout, :faraday_opts
 
     def initialize
       @api_host = DEFAULT_API_HOST
       @proxy = nil
       @adapter = Faraday.default_adapter
       @logger = Logger.new($stdout)
+      @timeout = 5
+      @open_timeout = 10
+      @faraday_opts = {}
     end
   end
 end
