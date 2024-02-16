@@ -28,6 +28,22 @@ module Boapi
       send_request(:post, '/api/v2/transactions/list', params)
     end
 
+    def create_rate(params)
+      send_request(:post, "/api/v2/rates", params)
+    end
+
+    def rates_list(params)
+      send_request(:get, "/api/v2/rates", params)
+    end
+
+    def get_rate(id)
+      send_request(:get, rate_path(id))
+    end
+
+    def rate_path(id = nil)
+      "/api/v2/rates/#{id}" if id
+    end
+
     def send_request(method, path, params = nil)
       response =
         begin
