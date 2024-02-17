@@ -89,6 +89,33 @@ response.data
 # {"pagination"=>{"date_from"=>"2023-02-20T09:02:59.669000Z", "date_to"=>"2023-02-20T09:02:59.669000Z", "date_type"=>"paid_at", "has_next_page"=>true, "next_date"=>"2023-02-20T09:36:15.994000Z"}, "transactions"=>[{"paid_at"=>"2023-02-20T09:12:34.567000Z", "provider_raw"=>{"ref_id"=>nil}, "shop_id"=>123, "uid"=>"e4800e1b-xxxx-xxxx-ae25-16f1xxxx661f"}]}
 ```
 
+Create rate
+
+```ruby
+params = { rates: { currency: "USD", created_at: "2023-05-29T17:12:10+03:00", apply_from: "2023-05-28T16:00:00+03:00", gateway_id: 1 } }
+response = client.create_rate(params)
+response.data
+# {"data"=>{"id"=>"53huht87-reh8-448t-8v78-b10f45hh672a", "currency"=>"USD", "created_at"=>"2023-05-29T14:12:10.000000Z", "gateway_id"=>1, "apply_from"=>"2023-05-28T13:00:00.000000Z", "rolling_reserve_days"=>3 ...
+```
+
+Rate
+
+```ruby
+id = '53huht87-reh8-448t-8v78-b10f45hh672a'
+response = client.get_rate(id)
+response.data
+# {"data"=>{"id"=>"53huht87-reh8-448t-8v78-b10f45hh672a", "currency"=>"USD", "rates"=>{"psp"=>{"capture"=>{"declined_fee"=>0, "max_commission"=>0, "min_commission"=>0, "successful_fee"=>0}, "void"=>{"declined_fee"=>0, "max_commission"=>0, "min_commission"=>0, "successful_fee"=>0} ...
+```
+
+Rates list
+
+```ruby
+params = { currency: 'USD', gateway_id: 1 }
+response = client.rates_list(params)
+response.data
+# {"data"=>{"rates"=>[{"id"=>"53huht87-reh8-448t-8v78-b10f45hh672a", "currency"=>"USD", "apply_from"=>"2023-05-28T13:00:00.000000Z"}, {"id"=>"7712h4sa-wl89-5i7i-96dy-e780921cra73", "currency"=>"USD", "apply_from"=>"2023-05-28T13:00:00.000000Z"}]}}
+```
+
 ## Errors
 
 Unauthorized
