@@ -60,7 +60,7 @@ module Boapi
     private
 
     def rate_path(id = nil)
-      path = "/api/v2/rates"
+      path = '/api/v2/rates'
       id.nil? ? path : "#{path}/#{id}"
     end
 

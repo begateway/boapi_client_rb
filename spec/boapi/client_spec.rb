@@ -193,7 +193,7 @@ RSpec.describe 'Client' do
           'created_at' => '2021-06-08T00:00:00.000000Z',
           'currency' => 'EUR',
           'gateway_id' => 123,
-          'id' => "961c3be2-c7b0-44ab-9f79-48cabd30c519",
+          'id' => '961c3be2-c7b0-44ab-9f79-48cabd30c519',
           'rolling_reserve_days' => 0,
           'rolling_reserve_rate' => 0.0,
           'rates' => {
@@ -202,102 +202,102 @@ RSpec.describe 'Client' do
                 'declined_fee' => 0,
                 'max_commission' => 0,
                 'min_commission' => 0,
-                'successful_fee' => 0,
+                'successful_fee' => 0
               },
               'capture' => {
                 'declined_fee' => 0,
                 'max_commission' => 0,
                 'min_commission' => 0,
-                'successful_fee' => 0,
+                'successful_fee' => 0
               },
               'chargeback' => {
                 'declined_fee' => 0,
                 'max_commission' => 0,
                 'min_commission' => 0,
-                'successful_fee' => 0,
+                'successful_fee' => 0
               },
               'p2p' => {
                 'declined_fee' => 0,
                 'max_commission' => 0,
                 'min_commission' => 0,
-                'successful_fee' => 0,
+                'successful_fee' => 0
               },
               'payment' => {
                 'declined_fee' => 0,
                 'max_commission' => 0,
                 'min_commission' => 0,
-                'successful_fee' => 0,
+                'successful_fee' => 0
               },
               'payout' => {
                 'declined_fee' => 0,
                 'max_commission' => 0,
                 'min_commission' => 0,
-                'successful_fee' => 0,
+                'successful_fee' => 0
               },
               'refund' => {
                 'declined_fee' => 0,
                 'max_commission' => 0,
                 'min_commission' => 0,
-                'successful_fee' => 0,
+                'successful_fee' => 0
               },
               'void' => {
                 'declined_fee' => 0,
                 'max_commission' => 0,
                 'min_commission' => 0,
-                'successful_fee' => 0,
-              },
+                'successful_fee' => 0
+              }
             },
             'psp' => {
               'authorization' => {
                 'declined_fee' => 0,
                 'max_commission' => 0,
                 'min_commission' => 0,
-                'successful_fee' => 0,
+                'successful_fee' => 0
               },
               'capture' => {
                 'declined_fee' => 0,
                 'max_commission' => 0,
                 'min_commission' => 0,
-                'successful_fee' => 0,
+                'successful_fee' => 0
               },
               'chargeback' => {
                 'declined_fee' => 0,
                 'max_commission' => 0,
                 'min_commission' => 0,
-                'successful_fee' => 0,
+                'successful_fee' => 0
               },
               'p2p' => {
                 'declined_fee' => 0,
                 'max_commission' => 0,
                 'min_commission' => 0,
-                'successful_fee' => 0,
+                'successful_fee' => 0
               },
               'payment' => {
                 'declined_fee' => 0,
                 'max_commission' => 0,
                 'min_commission' => 0,
-                'successful_fee' => 0,
+                'successful_fee' => 0
               },
               'payout' => {
                 'declined_fee' => 0,
                 'max_commission' => 0,
                 'min_commission' => 0,
-                'successful_fee' => 0,
+                'successful_fee' => 0
               },
               'refund' => {
                 'declined_fee' => 0,
                 'max_commission' => 0,
                 'min_commission' => 0,
-                'successful_fee' => 0,
+                'successful_fee' => 0
               },
               'void' => {
                 'declined_fee' => 0,
                 'max_commission' => 0,
                 'min_commission' => 0,
-                'successful_fee' => 0,
-              },
-            },
-          },
+                'successful_fee' => 0
+              }
+            }
+          }
         }
       end
 
@@ -328,21 +328,21 @@ RSpec.describe 'Client' do
     let(:url) { "#{Boapi.configuration.api_host}/api/v2/rates" }
 
     context 'when params given' do
-      let(:params) { { currency: "GBP", gateway_id: 123 } }
+      let(:params) { { currency: 'GBP', gateway_id: 123 } }
       let(:valid_response_message) do
         {
           'rates' => [
             {
-              'apply_from' => "2021-06-09T00:00:00.000000Z",
-              'currency' => "GBP",
-              'id' => "e4800e1b-fa21-4367-ae25-16f1eec8661f",
+              'apply_from' => '2021-06-09T00:00:00.000000Z',
+              'currency' => 'GBP',
+              'id' => 'e4800e1b-fa21-4367-ae25-16f1eec8661f'
             },
             {
-              'apply_from' => "2021-06-08T00:00:00.000000Z",
-              'currency' => "GBP",
-              'id' => "a1b993aa-d340-4d52-a0ce-92e5a30ab6a6",
-            },
-          ],
+              'apply_from' => '2021-06-08T00:00:00.000000Z',
+              'currency' => 'GBP',
+              'id' => 'a1b993aa-d340-4d52-a0ce-92e5a30ab6a6'
+            }
+          ]
         }
       end
 
@@ -371,115 +371,115 @@ RSpec.describe 'Client' do
     end
     let(:valid_response_message) do
       {
-        "apply_from" => "2021-06-08T00:00:00.000000Z",
-        "created_at" => "2021-06-08T00:00:00.000000Z",
-        "currency" => "EUR",
-        "gateway_id" => 123,
-        "id" => "961c3be2-c7b0-44ab-9f79-48cabd30c519",
-        "rolling_reserve_days" => 0,
-        "rolling_reserve_rate" => 0.0,
-        "rates" => {
-          "bank" => {
-            "authorization" => {
-              "declined_fee" => 0,
-              "max_commission" => 0,
-              "min_commission" => 0,
-              "successful_fee" => 0,
+        'apply_from' => '2021-06-08T00:00:00.000000Z',
+        'created_at' => '2021-06-08T00:00:00.000000Z',
+        'currency' => 'EUR',
+        'gateway_id' => 123,
+        'id' => '961c3be2-c7b0-44ab-9f79-48cabd30c519',
+        'rolling_reserve_days' => 0,
+        'rolling_reserve_rate' => 0.0,
+        'rates' => {
+          'bank' => {
+            'authorization' => {
+              'declined_fee' => 0,
+              'max_commission' => 0,
+              'min_commission' => 0,
+              'successful_fee' => 0
             },
-            "capture" => {
-              "declined_fee" => 0,
-              "max_commission" => 0,
-              "min_commission" => 0,
-              "successful_fee" => 0,
+            'capture' => {
+              'declined_fee' => 0,
+              'max_commission' => 0,
+              'min_commission' => 0,
+              'successful_fee' => 0
             },
-            "chargeback" => {
-              "declined_fee" => 0,
-              "max_commission" => 0,
-              "min_commission" => 0,
-              "successful_fee" => 0,
+            'chargeback' => {
+              'declined_fee' => 0,
+              'max_commission' => 0,
+              'min_commission' => 0,
+              'successful_fee' => 0
             },
-            "p2p" => {
-              "declined_fee" => 0,
-              "max_commission" => 0,
-              "min_commission" => 0,
-              "successful_fee" => 0,
+            'p2p' => {
+              'declined_fee' => 0,
+              'max_commission' => 0,
+              'min_commission' => 0,
+              'successful_fee' => 0
             },
-            "payment" => {
-              "declined_fee" => 0,
-              "max_commission" => 0,
-              "min_commission" => 0,
-              "successful_fee" => 0,
+            'payment' => {
+              'declined_fee' => 0,
+              'max_commission' => 0,
+              'min_commission' => 0,
+              'successful_fee' => 0
             },
-            "payout" => {
-              "declined_fee" => 0,
-              "max_commission" => 0,
-              "min_commission" => 0,
-              "successful_fee" => 0,
+            'payout' => {
+              'declined_fee' => 0,
+              'max_commission' => 0,
+              'min_commission' => 0,
+              'successful_fee' => 0
             },
-            "refund" => {
-              "declined_fee" => 0,
-              "max_commission" => 0,
-              "min_commission" => 0,
-              "successful_fee" => 0,
+            'refund' => {
+              'declined_fee' => 0,
+              'max_commission' => 0,
+              'min_commission' => 0,
+              'successful_fee' => 0
             },
-            "void" => {
-              "declined_fee" => 0,
-              "max_commission" => 0,
-              "min_commission" => 0,
-              "successful_fee" => 0,
-            },
+            'void' => {
+              'declined_fee' => 0,
+              'max_commission' => 0,
+              'min_commission' => 0,
+              'successful_fee' => 0
+            }
           },
-          "psp" => {
-            "authorization" => {
-              "declined_fee" => 0,
-              "max_commission" => 0,
-              "min_commission" => 0,
-              "successful_fee" => 0,
+          'psp' => {
+            'authorization' => {
+              'declined_fee' => 0,
+              'max_commission' => 0,
+              'min_commission' => 0,
+              'successful_fee' => 0
             },
-            "capture" => {
-              "declined_fee" => 0,
-              "max_commission" => 0,
-              "min_commission" => 0,
-              "successful_fee" => 0,
+            'capture' => {
+              'declined_fee' => 0,
+              'max_commission' => 0,
+              'min_commission' => 0,
+              'successful_fee' => 0
             },
-            "chargeback" => {
-              "declined_fee" => 0,
-              "max_commission" => 0,
-              "min_commission" => 0,
-              "successful_fee" => 0,
+            'chargeback' => {
+              'declined_fee' => 0,
+              'max_commission' => 0,
+              'min_commission' => 0,
+              'successful_fee' => 0
             },
-            "p2p" => {
-              "declined_fee" => 0,
-              "max_commission" => 0,
-              "min_commission" => 0,
-              "successful_fee" => 0,
+            'p2p' => {
+              'declined_fee' => 0,
+              'max_commission' => 0,
+              'min_commission' => 0,
+              'successful_fee' => 0
             },
-            "payment" => {
-              "declined_fee" => 0,
-              "max_commission" => 0,
-              "min_commission" => 0,
-              "successful_fee" => 0,
+            'payment' => {
+              'declined_fee' => 0,
+              'max_commission' => 0,
+              'min_commission' => 0,
+              'successful_fee' => 0
             },
-            "payout" => {
-              "declined_fee" => 0,
-              "max_commission" => 0,
-              "min_commission" => 0,
-              "successful_fee" => 0,
+            'payout' => {
+              'declined_fee' => 0,
+              'max_commission' => 0,
+              'min_commission' => 0,
+              'successful_fee' => 0
             },
-            "refund" => {
-              "declined_fee" => 0,
-              "max_commission" => 0,
-              "min_commission" => 0,
-              "successful_fee" => 0,
+            'refund' => {
+              'declined_fee' => 0,
+              'max_commission' => 0,
+              'min_commission' => 0,
+              'successful_fee' => 0
             },
-            "void" => {
-              "declined_fee" => 0,
-              "max_commission" => 0,
-              "min_commission" => 0,
-              "successful_fee" => 0,
-            },
-          },
-        },
+            'void' => {
+              'declined_fee' => 0,
+              'max_commission' => 0,
+              'min_commission' => 0,
+              'successful_fee' => 0
+            }
+          }
+        }
       }
     end
 
@@ -491,8 +491,8 @@ RSpec.describe 'Client' do
           currency: 'EUR',
           apply_from: '2021-06-08T00:00:00.000Z',
           created_at: '2021-06-08T00:00:00.000Z',
-          gateway_id: gateway_id,
-        },
+          gateway_id: gateway_id
+        }
       }
     end
 
