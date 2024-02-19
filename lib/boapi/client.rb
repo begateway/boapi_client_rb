@@ -28,6 +28,18 @@ module Boapi
       send_request(:post, '/api/v2/transactions/list', params)
     end
 
+    def create_rate(params)
+      send_request(:post, rate_path, params)
+    end
+
+    def rates_list(params)
+      send_request(:get, rate_path, params)
+    end
+
+    def get_rate(id)
+      send_request(:get, rate_path(id))
+    end
+
     def send_request(method, path, params = nil)
       response =
         begin
@@ -46,6 +58,11 @@ module Boapi
     end
 
     private
+
+    def rate_path(id = nil)
+      path = '/api/v2/rates'
+      id.nil? ? path : "#{path}/#{id}"
+    end
 
     # rubocop:disable Metrics/AbcSize
     # rubocop:disable Metrics/MethodLength
