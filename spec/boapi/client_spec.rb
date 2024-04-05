@@ -196,114 +196,110 @@ RSpec.describe 'Client' do
           'id' => '961c3be2-c7b0-44ab-9f79-48cabd30c519',
           'rolling_reserve_days' => 0,
           'rolling_reserve_rate' => 0.0,
-          'rates' => {
-            'bank' => {
-              'authorization' => {
-                'declined_fee' => 0,
-                'max_commission' => 0,
-                'min_commission' => 0,
-                'successful_fee' => 0
-              },
-              'capture' => {
-                'declined_fee' => 0,
-                'max_commission' => 0,
-                'min_commission' => 0,
-                'successful_fee' => 0
-              },
-              'chargeback' => {
-                'declined_fee' => 0,
-                'max_commission' => 0,
-                'min_commission' => 0,
-                'successful_fee' => 0
-              },
-              'p2p' => {
-                'declined_fee' => 0,
-                'max_commission' => 0,
-                'min_commission' => 0,
-                'successful_fee' => 0
-              },
-              'payment' => {
-                'declined_fee' => 0,
-                'max_commission' => 0,
-                'min_commission' => 0,
-                'successful_fee' => 0
-              },
-              'payout' => {
-                'declined_fee' => 0,
-                'max_commission' => 0,
-                'min_commission' => 0,
-                'successful_fee' => 0
-              },
-              'refund' => {
-                'declined_fee' => 0,
-                'max_commission' => 0,
-                'min_commission' => 0,
-                'successful_fee' => 0
-              },
-              'void' => {
-                'declined_fee' => 0,
-                'max_commission' => 0,
-                'min_commission' => 0,
-                'successful_fee' => 0
-              }
-            },
-            'psp' => {
-              'authorization' => {
-                'declined_fee' => 0,
-                'max_commission' => 0,
-                'min_commission' => 0,
-                'successful_fee' => 0
-              },
-              'capture' => {
-                'declined_fee' => 0,
-                'max_commission' => 0,
-                'min_commission' => 0,
-                'successful_fee' => 0
-              },
-              'chargeback' => {
-                'declined_fee' => 0,
-                'max_commission' => 0,
-                'min_commission' => 0,
-                'successful_fee' => 0
-              },
-              'p2p' => {
-                'declined_fee' => 0,
-                'max_commission' => 0,
-                'min_commission' => 0,
-                'successful_fee' => 0
-              },
-              'payment' => {
-                'declined_fee' => 0,
-                'max_commission' => 0,
-                'min_commission' => 0,
-                'successful_fee' => 0
-              },
-              'payout' => {
-                'declined_fee' => 0,
-                'max_commission' => 0,
-                'min_commission' => 0,
-                'successful_fee' => 0
-              },
-              'refund' => {
-                'declined_fee' => 0,
-                'max_commission' => 0,
-                'min_commission' => 0,
-                'successful_fee' => 0
-              },
-              'void' => {
-                'declined_fee' => 0,
-                'max_commission' => 0,
-                'min_commission' => 0,
-                'successful_fee' => 0
-              }
-            }
-          }
+          'psp_authorization_declined_fee' => 0,
+          'psp_capture_declined_fee' => 0,
+          'psp_chargeback_declined_fee' => 0,
+          'psp_p2p_declined_fee' => 0,
+          'psp_payment_declined_fee' => 0,
+          'psp_payout_declined_fee' => 0,
+          'psp_refund_declined_fee' => 0,
+          'psp_void_declined_fee' => 0,
+          'psp_authorization_max_commission' => 0,
+          'psp_capture_max_commission' => 0,
+          'psp_chargeback_max_commission' => 0,
+          'psp_p2p_max_commission' => 0,
+          'psp_payment_max_commission' => 0,
+          'psp_payout_max_commission' => 0,
+          'psp_refund_max_commission' => 0,
+          'psp_authorization_min_commission' => 0,
+          'psp_capture_min_commission' => 0,
+          'psp_chargeback_min_commission' => 0,
+          'psp_p2p_min_commission' => 0,
+          'psp_payment_min_commission' => 0,
+          'psp_payout_min_commission' => 0,
+          'psp_refund_min_commission' => 0,
+          'psp_void_max_commission' => 0,
+          'psp_void_min_commission' => 0,
+          'psp_authorization_successful_fee' => 0,
+          'psp_capture_successful_fee' => 0,
+          'psp_chargeback_successful_fee' => 0,
+          'psp_p2p_successful_fee' => 0,
+          'psp_payment_successful_fee' => 0,
+          'psp_payout_successful_fee' => 0,
+          'psp_refund_successful_fee' => 0,
+          'psp_void_successful_fee' => 0,
+          'psp_authorization_declined_rae' => 0.0,
+          'psp_capture_declined_rate' => 0.0,
+          'psp_chargeback_declined_rate' => 0.0,
+          'psp_p2p_declined_rate' => 0.0,
+          'psp_payment_declined_rate' => 0.0,
+          'psp_payout_declined_rate' => 0.0,
+          'psp_refund_declined_rate' => 0.0,
+          'psp_void_declined_rate' => 0.0,
+          'psp_authorization_successful_rate' => 0.0,
+          'psp_capture_successful_rate' => 0.0,
+          'psp_chargeback_successful_rate' => 0.0,
+          'psp_p2p_successful_rate' => 0.0,
+          'psp_payment_successful_rate' => 0.0,
+          'psp_payout_successful_rate' => 0.0,
+          'psp_refund_successful_rate' => 0.0,
+          'psp_void_successful_rate' => 0.0,
+          'bank_authorization_declined_fee' => 0,
+          'bank_capture_declined_fee' => 0,
+          'bank_chargeback_declined_fee' => 0,
+          'bank_p2p_declined_fee' => 0,
+          'bank_payment_declined_fee' => 0,
+          'bank_payout_declined_fee' => 0,
+          'bank_refund_declined_fee' => 0,
+          'bank_void_declined_fee' => 0,
+          'bank_authorization_max_commission' => 0,
+          'bank_capture_max_commission' => 0,
+          'bank_chargeback_max_commission' => 0,
+          'bank_p2p_max_commission' => 0,
+          'bank_payment_max_commission' => 0,
+          'bank_payout_max_commission' => 0,
+          'bank_refund_max_commission' => 0,
+          'bank_void_max_commission' => 0,
+          'bank_authorization_min_commission' => 0,
+          'bank_capture_min_commission' => 0,
+          'bank_chargeback_min_commission' => 0,
+          'bank_p2p_min_commission' => 0,
+          'bank_payment_min_commission' => 0,
+          'bank_payout_min_commission' => 0,
+          'bank_refund_min_commission' => 0,
+          'bank_void_min_commission' => 0,
+          'bank_authorization_successful_fee' => 0,
+          'bank_capture_successful_fee' => 0,
+          'bank_chargeback_successful_fee' => 0,
+          'bank_p2p_successful_fee' => 0,
+          'bank_payment_successful_fee' => 0,
+          'bank_payout_successful_fee' => 0,
+          'bank_refund_successful_fee' => 0,
+          'bank_void_successful_fee' => 0,
+          'bank_authorization_declined_rate' => 0.0,
+          'bank_capture_declined_rate' => 0.0,
+          'bank_chargeback_declined_rate' => 0.0,
+          'bank_p2p_declined_rate' => 0.0,
+          'bank_payment_declined_rate' => 0.0,
+          'bank_payout_declined_rate' => 0.0,
+          'bank_refund_declined_rate' => 0.0,
+          'bank_void_declined_rate' => 0.0,
+          'bank_authorization_successful_rate' => 0.0,
+          'bank_capture_successful_rate' => 0.0,
+          'bank_chargeback_successful_rate' => 0.0,
+          'bank_p2p_successful_rate' => 0.0,
+          'bank_payment_successful_rate' => 0.0,
+          'bank_payout_successful_rate' => 0.0,
+          'bank_refund_successful_rate' => 0.0,
+          'bank_void_successful_rate' => 0.0,
+          'bank_dynamic_gross' => false,
+          'bank_dynamic_net' => false
         }
       end
 
       before do
         body = <<~STR
-          {"data":{"apply_from":"2021-06-08T00:00:00.000000Z", "created_at":"2021-06-08T00:00:00.000000Z", "currency":"EUR", "gateway_id":123, "id":"961c3be2-c7b0-44ab-9f79-48cabd30c519", "rolling_reserve_days":0, "rolling_reserve_rate":0.0, "rates":{"bank":{"authorization":{"declined_fee":0, "max_commission":0, "min_commission":0, "successful_fee":0}, "capture":{"declined_fee":0, "max_commission":0, "min_commission":0, "successful_fee":0}, "chargeback":{"declined_fee":0, "max_commission":0, "min_commission":0, "successful_fee":0}, "p2p":{"declined_fee":0, "max_commission":0, "min_commission":0, "successful_fee":0}, "payment":{"declined_fee":0, "max_commission":0, "min_commission":0, "successful_fee":0}, "payout":{"declined_fee":0, "max_commission":0, "min_commission":0, "successful_fee":0}, "refund":{"declined_fee":0, "max_commission":0, "min_commission":0, "successful_fee":0}, "void":{"declined_fee":0, "max_commission":0, "min_commission":0, "successful_fee":0}}, "psp":{"authorization":{"declined_fee":0, "max_commission":0, "min_commission":0, "successful_fee":0}, "capture":{"declined_fee":0, "max_commission":0, "min_commission":0, "successful_fee":0}, "chargeback":{"declined_fee":0, "max_commission":0, "min_commission":0, "successful_fee":0}, "p2p":{"declined_fee":0, "max_commission":0, "min_commission":0, "successful_fee":0}, "payment":{"declined_fee":0, "max_commission":0, "min_commission":0, "successful_fee":0}, "payout":{"declined_fee":0, "max_commission":0, "min_commission":0, "successful_fee":0}, "refund":{"declined_fee":0, "max_commission":0, "min_commission":0, "successful_fee":0}, "void":{"declined_fee":0, "max_commission":0, "min_commission":0, "successful_fee":0}}}}}
+          {"data":{"apply_from":"2021-06-08T00:00:00.000000Z", "created_at":"2021-06-08T00:00:00.000000Z", "currency":"EUR", "gateway_id":123, "id":"961c3be2-c7b0-44ab-9f79-48cabd30c519", "rolling_reserve_days":0, "rolling_reserve_rate":0.0, "psp_authorization_declined_fee":0, "psp_capture_declined_fee":0, "psp_chargeback_declined_fee":0, "psp_p2p_declined_fee":0, "psp_payment_declined_fee":0, "psp_payout_declined_fee":0, "psp_refund_declined_fee":0, "psp_void_declined_fee":0, "psp_authorization_max_commission":0, "psp_capture_max_commission":0, "psp_chargeback_max_commission":0, "psp_p2p_max_commission":0, "psp_payment_max_commission":0, "psp_payout_max_commission":0, "psp_refund_max_commission":0, "psp_authorization_min_commission":0, "psp_capture_min_commission":0, "psp_chargeback_min_commission":0, "psp_p2p_min_commission":0, "psp_payment_min_commission":0, "psp_payout_min_commission":0, "psp_refund_min_commission":0, "psp_void_max_commission":0, "psp_void_min_commission":0, "psp_authorization_successful_fee":0, "psp_capture_successful_fee":0, "psp_chargeback_successful_fee":0, "psp_p2p_successful_fee":0, "psp_payment_successful_fee":0, "psp_payout_successful_fee":0, "psp_refund_successful_fee":0, "psp_void_successful_fee":0, "psp_authorization_declined_rae":0.0, "psp_capture_declined_rate":0.0, "psp_chargeback_declined_rate":0.0, "psp_p2p_declined_rate":0.0, "psp_payment_declined_rate":0.0, "psp_payout_declined_rate":0.0, "psp_refund_declined_rate":0.0, "psp_void_declined_rate":0.0, "psp_authorization_successful_rate":0.0, "psp_capture_successful_rate":0.0, "psp_chargeback_successful_rate":0.0, "psp_p2p_successful_rate":0.0, "psp_payment_successful_rate":0.0, "psp_payout_successful_rate":0.0, "psp_refund_successful_rate":0.0, "psp_void_successful_rate":0.0, "bank_authorization_declined_fee":0, "bank_capture_declined_fee":0, "bank_chargeback_declined_fee":0, "bank_p2p_declined_fee":0, "bank_payment_declined_fee":0, "bank_payout_declined_fee":0, "bank_refund_declined_fee":0, "bank_void_declined_fee":0, "bank_authorization_max_commission":0, "bank_capture_max_commission":0, "bank_chargeback_max_commission":0, "bank_p2p_max_commission":0, "bank_payment_max_commission":0, "bank_payout_max_commission":0, "bank_refund_max_commission":0, "bank_void_max_commission":0, "bank_authorization_min_commission":0, "bank_capture_min_commission":0, "bank_chargeback_min_commission":0, "bank_p2p_min_commission":0, "bank_payment_min_commission":0, "bank_payout_min_commission":0, "bank_refund_min_commission":0, "bank_void_min_commission":0, "bank_authorization_successful_fee":0, "bank_capture_successful_fee":0, "bank_chargeback_successful_fee":0, "bank_p2p_successful_fee":0, "bank_payment_successful_fee":0, "bank_payout_successful_fee":0, "bank_refund_successful_fee":0, "bank_void_successful_fee":0, "bank_authorization_declined_rate":0.0, "bank_capture_declined_rate":0.0, "bank_chargeback_declined_rate":0.0, "bank_p2p_declined_rate":0.0, "bank_payment_declined_rate":0.0, "bank_payout_declined_rate":0.0, "bank_refund_declined_rate":0.0, "bank_void_declined_rate":0.0, "bank_authorization_successful_rate":0.0, "bank_capture_successful_rate":0.0, "bank_chargeback_successful_rate":0.0, "bank_p2p_successful_rate":0.0, "bank_payment_successful_rate":0.0, "bank_payout_successful_rate":0.0, "bank_refund_successful_rate":0.0, "bank_void_successful_rate":0.0, "bank_dynamic_gross":false, "bank_dynamic_net":false}}
         STR
 
         stub_request(:get, url)
@@ -378,108 +374,104 @@ RSpec.describe 'Client' do
         'id' => '961c3be2-c7b0-44ab-9f79-48cabd30c519',
         'rolling_reserve_days' => 0,
         'rolling_reserve_rate' => 0.0,
-        'rates' => {
-          'bank' => {
-            'authorization' => {
-              'declined_fee' => 0,
-              'max_commission' => 0,
-              'min_commission' => 0,
-              'successful_fee' => 0
-            },
-            'capture' => {
-              'declined_fee' => 0,
-              'max_commission' => 0,
-              'min_commission' => 0,
-              'successful_fee' => 0
-            },
-            'chargeback' => {
-              'declined_fee' => 0,
-              'max_commission' => 0,
-              'min_commission' => 0,
-              'successful_fee' => 0
-            },
-            'p2p' => {
-              'declined_fee' => 0,
-              'max_commission' => 0,
-              'min_commission' => 0,
-              'successful_fee' => 0
-            },
-            'payment' => {
-              'declined_fee' => 0,
-              'max_commission' => 0,
-              'min_commission' => 0,
-              'successful_fee' => 0
-            },
-            'payout' => {
-              'declined_fee' => 0,
-              'max_commission' => 0,
-              'min_commission' => 0,
-              'successful_fee' => 0
-            },
-            'refund' => {
-              'declined_fee' => 0,
-              'max_commission' => 0,
-              'min_commission' => 0,
-              'successful_fee' => 0
-            },
-            'void' => {
-              'declined_fee' => 0,
-              'max_commission' => 0,
-              'min_commission' => 0,
-              'successful_fee' => 0
-            }
-          },
-          'psp' => {
-            'authorization' => {
-              'declined_fee' => 0,
-              'max_commission' => 0,
-              'min_commission' => 0,
-              'successful_fee' => 0
-            },
-            'capture' => {
-              'declined_fee' => 0,
-              'max_commission' => 0,
-              'min_commission' => 0,
-              'successful_fee' => 0
-            },
-            'chargeback' => {
-              'declined_fee' => 0,
-              'max_commission' => 0,
-              'min_commission' => 0,
-              'successful_fee' => 0
-            },
-            'p2p' => {
-              'declined_fee' => 0,
-              'max_commission' => 0,
-              'min_commission' => 0,
-              'successful_fee' => 0
-            },
-            'payment' => {
-              'declined_fee' => 0,
-              'max_commission' => 0,
-              'min_commission' => 0,
-              'successful_fee' => 0
-            },
-            'payout' => {
-              'declined_fee' => 0,
-              'max_commission' => 0,
-              'min_commission' => 0,
-              'successful_fee' => 0
-            },
-            'refund' => {
-              'declined_fee' => 0,
-              'max_commission' => 0,
-              'min_commission' => 0,
-              'successful_fee' => 0
-            },
-            'void' => {
-              'declined_fee' => 0,
-              'max_commission' => 0,
-              'min_commission' => 0,
-              'successful_fee' => 0
-            }
-          }
-        }
+        'psp_authorization_declined_fee' => 0,
+        'psp_capture_declined_fee' => 0,
+        'psp_chargeback_declined_fee' => 0,
+        'psp_p2p_declined_fee' => 0,
+        'psp_payment_declined_fee' => 0,
+        'psp_payout_declined_fee' => 0,
+        'psp_refund_declined_fee' => 0,
+        'psp_void_declined_fee' => 0,
+        'psp_authorization_max_commission' => 0,
+        'psp_capture_max_commission' => 0,
+        'psp_chargeback_max_commission' => 0,
+        'psp_p2p_max_commission' => 0,
+        'psp_payment_max_commission' => 0,
+        'psp_payout_max_commission' => 0,
+        'psp_refund_max_commission' => 0,
+        'psp_authorization_min_commission' => 0,
+        'psp_capture_min_commission' => 0,
+        'psp_chargeback_min_commission' => 0,
+        'psp_p2p_min_commission' => 0,
+        'psp_payment_min_commission' => 0,
+        'psp_payout_min_commission' => 0,
+        'psp_refund_min_commission' => 0,
+        'psp_void_max_commission' => 0,
+        'psp_void_min_commission' => 0,
+        'psp_authorization_successful_fee' => 0,
+        'psp_capture_successful_fee' => 0,
+        'psp_chargeback_successful_fee' => 0,
+        'psp_p2p_successful_fee' => 0,
+        'psp_payment_successful_fee' => 0,
+        'psp_payout_successful_fee' => 0,
+        'psp_refund_successful_fee' => 0,
+        'psp_void_successful_fee' => 0,
+        'psp_authorization_declined_rae' => 0.0,
+        'psp_capture_declined_rate' => 0.0,
+        'psp_chargeback_declined_rate' => 0.0,
+        'psp_p2p_declined_rate' => 0.0,
+        'psp_payment_declined_rate' => 0.0,
+        'psp_payout_declined_rate' => 0.0,
+        'psp_refund_declined_rate' => 0.0,
+        'psp_void_declined_rate' => 0.0,
+        'psp_authorization_successful_rate' => 0.0,
+        'psp_capture_successful_rate' => 0.0,
+        'psp_chargeback_successful_rate' => 0.0,
+        'psp_p2p_successful_rate' => 0.0,
+        'psp_payment_successful_rate' => 0.0,
+        'psp_payout_successful_rate' => 0.0,
+        'psp_refund_successful_rate' => 0.0,
+        'psp_void_successful_rate' => 0.0,
+        'bank_authorization_declined_fee' => 0,
+        'bank_capture_declined_fee' => 0,
+        'bank_chargeback_declined_fee' => 0,
+        'bank_p2p_declined_fee' => 0,
+        'bank_payment_declined_fee' => 0,
+        'bank_payout_declined_fee' => 0,
+        'bank_refund_declined_fee' => 0,
+        'bank_void_declined_fee' => 0,
+        'bank_authorization_max_commission' => 0,
+        'bank_capture_max_commission' => 0,
+        'bank_chargeback_max_commission' => 0,
+        'bank_p2p_max_commission' => 0,
+        'bank_payment_max_commission' => 0,
+        'bank_payout_max_commission' => 0,
+        'bank_refund_max_commission' => 0,
+        'bank_void_max_commission' => 0,
+        'bank_authorization_min_commission' => 0,
+        'bank_capture_min_commission' => 0,
+        'bank_chargeback_min_commission' => 0,
+        'bank_p2p_min_commission' => 0,
+        'bank_payment_min_commission' => 0,
+        'bank_payout_min_commission' => 0,
+        'bank_refund_min_commission' => 0,
+        'bank_void_min_commission' => 0,
+        'bank_authorization_successful_fee' => 0,
+        'bank_capture_successful_fee' => 0,
+        'bank_chargeback_successful_fee' => 0,
+        'bank_p2p_successful_fee' => 0,
+        'bank_payment_successful_fee' => 0,
+        'bank_payout_successful_fee' => 0,
+        'bank_refund_successful_fee' => 0,
+        'bank_void_successful_fee' => 0,
+        'bank_authorization_declined_rate' => 0.0,
+        'bank_capture_declined_rate' => 0.0,
+        'bank_chargeback_declined_rate' => 0.0,
+        'bank_p2p_declined_rate' => 0.0,
+        'bank_payment_declined_rate' => 0.0,
+        'bank_payout_declined_rate' => 0.0,
+        'bank_refund_declined_rate' => 0.0,
+        'bank_void_declined_rate' => 0.0,
+        'bank_authorization_successful_rate' => 0.0,
+        'bank_capture_successful_rate' => 0.0,
+        'bank_chargeback_successful_rate' => 0.0,
+        'bank_p2p_successful_rate' => 0.0,
+        'bank_payment_successful_rate' => 0.0,
+        'bank_payout_successful_rate' => 0.0,
+        'bank_refund_successful_rate' => 0.0,
+        'bank_void_successful_rate' => 0.0,
+        'bank_dynamic_gross' => false,
+        'bank_dynamic_net' => false
       }
     end
 
@@ -487,7 +479,7 @@ RSpec.describe 'Client' do
     let(:gateway_id) { 123 }
     let(:params) do
       {
-        rates: {
+        rate: {
           currency: 'EUR',
           apply_from: '2021-06-08T00:00:00.000Z',
           created_at: '2021-06-08T00:00:00.000Z',
@@ -498,7 +490,7 @@ RSpec.describe 'Client' do
 
     before do
       body = <<~STR
-        {"data":{"apply_from":"2021-06-08T00:00:00.000000Z", "created_at":"2021-06-08T00:00:00.000000Z", "currency":"EUR", "gateway_id":123, "id":"961c3be2-c7b0-44ab-9f79-48cabd30c519", "rolling_reserve_days":0, "rolling_reserve_rate":0.0, "rates":{"bank":{"authorization":{"declined_fee":0, "max_commission":0, "min_commission":0, "successful_fee":0}, "capture":{"declined_fee":0, "max_commission":0, "min_commission":0, "successful_fee":0}, "chargeback":{"declined_fee":0, "max_commission":0, "min_commission":0, "successful_fee":0}, "p2p":{"declined_fee":0, "max_commission":0, "min_commission":0, "successful_fee":0}, "payment":{"declined_fee":0, "max_commission":0, "min_commission":0, "successful_fee":0}, "payout":{"declined_fee":0, "max_commission":0, "min_commission":0, "successful_fee":0}, "refund":{"declined_fee":0, "max_commission":0, "min_commission":0, "successful_fee":0}, "void":{"declined_fee":0, "max_commission":0, "min_commission":0, "successful_fee":0}}, "psp":{"authorization":{"declined_fee":0, "max_commission":0, "min_commission":0, "successful_fee":0}, "capture":{"declined_fee":0, "max_commission":0, "min_commission":0, "successful_fee":0}, "chargeback":{"declined_fee":0, "max_commission":0, "min_commission":0, "successful_fee":0}, "p2p":{"declined_fee":0, "max_commission":0, "min_commission":0, "successful_fee":0}, "payment":{"declined_fee":0, "max_commission":0, "min_commission":0, "successful_fee":0}, "payout":{"declined_fee":0, "max_commission":0, "min_commission":0, "successful_fee":0}, "refund":{"declined_fee":0, "max_commission":0, "min_commission":0, "successful_fee":0}, "void":{"declined_fee":0, "max_commission":0, "min_commission":0, "successful_fee":0}}}}}
+          {"data":{"apply_from":"2021-06-08T00:00:00.000000Z", "created_at":"2021-06-08T00:00:00.000000Z", "currency":"EUR", "gateway_id":123, "id":"961c3be2-c7b0-44ab-9f79-48cabd30c519", "rolling_reserve_days":0, "rolling_reserve_rate":0.0, "psp_authorization_declined_fee":0, "psp_capture_declined_fee":0, "psp_chargeback_declined_fee":0, "psp_p2p_declined_fee":0, "psp_payment_declined_fee":0, "psp_payout_declined_fee":0, "psp_refund_declined_fee":0, "psp_void_declined_fee":0, "psp_authorization_max_commission":0, "psp_capture_max_commission":0, "psp_chargeback_max_commission":0, "psp_p2p_max_commission":0, "psp_payment_max_commission":0, "psp_payout_max_commission":0, "psp_refund_max_commission":0, "psp_authorization_min_commission":0, "psp_capture_min_commission":0, "psp_chargeback_min_commission":0, "psp_p2p_min_commission":0, "psp_payment_min_commission":0, "psp_payout_min_commission":0, "psp_refund_min_commission":0, "psp_void_max_commission":0, "psp_void_min_commission":0, "psp_authorization_successful_fee":0, "psp_capture_successful_fee":0, "psp_chargeback_successful_fee":0, "psp_p2p_successful_fee":0, "psp_payment_successful_fee":0, "psp_payout_successful_fee":0, "psp_refund_successful_fee":0, "psp_void_successful_fee":0, "psp_authorization_declined_rae":0.0, "psp_capture_declined_rate":0.0, "psp_chargeback_declined_rate":0.0, "psp_p2p_declined_rate":0.0, "psp_payment_declined_rate":0.0, "psp_payout_declined_rate":0.0, "psp_refund_declined_rate":0.0, "psp_void_declined_rate":0.0, "psp_authorization_successful_rate":0.0, "psp_capture_successful_rate":0.0, "psp_chargeback_successful_rate":0.0, "psp_p2p_successful_rate":0.0, "psp_payment_successful_rate":0.0, "psp_payout_successful_rate":0.0, "psp_refund_successful_rate":0.0, "psp_void_successful_rate":0.0, "bank_authorization_declined_fee":0, "bank_capture_declined_fee":0, "bank_chargeback_declined_fee":0, "bank_p2p_declined_fee":0, "bank_payment_declined_fee":0, "bank_payout_declined_fee":0, "bank_refund_declined_fee":0, "bank_void_declined_fee":0, "bank_authorization_max_commission":0, "bank_capture_max_commission":0, "bank_chargeback_max_commission":0, "bank_p2p_max_commission":0, "bank_payment_max_commission":0, "bank_payout_max_commission":0, "bank_refund_max_commission":0, "bank_void_max_commission":0, "bank_authorization_min_commission":0, "bank_capture_min_commission":0, "bank_chargeback_min_commission":0, "bank_p2p_min_commission":0, "bank_payment_min_commission":0, "bank_payout_min_commission":0, "bank_refund_min_commission":0, "bank_void_min_commission":0, "bank_authorization_successful_fee":0, "bank_capture_successful_fee":0, "bank_chargeback_successful_fee":0, "bank_p2p_successful_fee":0, "bank_payment_successful_fee":0, "bank_payout_successful_fee":0, "bank_refund_successful_fee":0, "bank_void_successful_fee":0, "bank_authorization_declined_rate":0.0, "bank_capture_declined_rate":0.0, "bank_chargeback_declined_rate":0.0, "bank_p2p_declined_rate":0.0, "bank_payment_declined_rate":0.0, "bank_payout_declined_rate":0.0, "bank_refund_declined_rate":0.0, "bank_void_declined_rate":0.0, "bank_authorization_successful_rate":0.0, "bank_capture_successful_rate":0.0, "bank_chargeback_successful_rate":0.0, "bank_p2p_successful_rate":0.0, "bank_payment_successful_rate":0.0, "bank_payout_successful_rate":0.0, "bank_refund_successful_rate":0.0, "bank_void_successful_rate":0.0, "bank_dynamic_gross":false, "bank_dynamic_net":false}}
       STR
 
       stub_request(:post, url).with(body: params.to_json)
