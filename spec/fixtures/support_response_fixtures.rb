@@ -8,7 +8,7 @@ module SupportResponseFixtures
   end
 
   def health_response
-    %({"data":{"click":true,"healthy":true,"pg":true,"rabbitmq":true,"redis":true,"version":"0.2.13"}})
+    %({"data":#{health_response_message.to_json}})
   end
 
   def error_without_authentification_response_message
@@ -19,7 +19,6 @@ module SupportResponseFixtures
   end
 
   def error_without_authentification_response
-    %({"error":{"code":"unauthorized","friendly_message":"You can't have access to this area",
-       "help":"https://doc.ecomcharge.com/codes/unauthorized","message":"Unauthorized"}})
+    %({"error":#{error_without_authentification_response_message.to_json}})
   end
 end
