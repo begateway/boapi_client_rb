@@ -95,7 +95,7 @@ Create rate
 params = { rate: { currency: "USD", created_at: "2023-05-29T17:12:10+03:00", apply_from: "2023-05-28T16:00:00+03:00", gateway_id: 1, rolling_reserve_days: 3 } }
 response = client.create_rate(params)
 response.data
-# {"data"=>{"id"=>"53huht87-reh8-448t-8v78-b10f45hh672a", "currency"=>"USD", "created_at"=>"2023-05-29T14:12:10.000000Z", "gateway_id"=>1, "apply_from"=>"2023-05-28T13:00:00.000000Z", "rolling_reserve_days"=>3 ...
+# {"id"=>"53huht87-reh8-448t-8v78-b10f45hh672a", "currency"=>"USD", "created_at"=>"2023-05-29T14:12:10.000000Z", "gateway_id"=>1, "apply_from"=>"2023-05-28T13:00:00.000000Z", "rolling_reserve_days"=>3, "psp_capture_declined_fee"=>0 ...
 ```
 
 Rate
@@ -104,7 +104,7 @@ Rate
 id = '53huht87-reh8-448t-8v78-b10f45hh672a'
 response = client.get_rate(id)
 response.data
-# {"data"=>{"id"=>"53huht87-reh8-448t-8v78-b10f45hh672a", "currency"=>"USD", "rates"=>{"psp"=>{"capture"=>{"declined_fee"=>0, "max_commission"=>0, "min_commission"=>0, "successful_fee"=>0}, "void"=>{"declined_fee"=>0, "max_commission"=>0, "min_commission"=>0, "successful_fee"=>0} ...
+# {"id"=>"53huht87-reh8-448t-8v78-b10f45hh672a", "currency"=>"USD", "psp_capture_declined_fee"=>0, "psp_capture_max_commission"=>0, "psp_capture_min_commission"=>0, "psp_capture_successful_fee"=>0, "psp_void_declined_fee"=>0, "psp_void_max_commission"=>0, "psp_void_min_commission"=>0, "psp_void_successful_fee"=>0} ...
 ```
 
 Rates list
@@ -113,7 +113,7 @@ Rates list
 params = { currency: 'USD', gateway_id: 1 }
 response = client.rates_list(params)
 response.data
-# {"data"=>{"rates"=>[{"id"=>"53huht87-reh8-448t-8v78-b10f45hh672a", "currency"=>"USD", "apply_from"=>"2023-05-28T13:00:00.000000Z"}, {"id"=>"7712h4sa-wl89-5i7i-96dy-e780921cra73", "currency"=>"USD", "apply_from"=>"2023-05-28T13:00:00.000000Z"}]}}
+# {"rates"=>[{"id"=>"53huht87-reh8-448t-8v78-b10f45hh672a", "currency"=>"USD", "apply_from"=>"2023-05-28T13:00:00.000000Z"}, {"id"=>"7712h4sa-wl89-5i7i-96dy-e780921cra73", "currency"=>"USD", "apply_from"=>"2023-05-28T13:00:00.000000Z"}]}
 ```
 
 ## Errors
