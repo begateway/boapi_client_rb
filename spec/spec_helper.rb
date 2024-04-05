@@ -3,6 +3,11 @@
 require 'boapi'
 require 'webmock/rspec'
 
+require 'fixtures/support_response_fixtures'
+require 'fixtures/currency_response_fixtures'
+require 'fixtures/rate_response_fixtures'
+require 'fixtures/transaction_response_fixtures'
+
 WebMock.disable_net_connect!(allow_localhost: false)
 
 RSpec.configure do |config|
