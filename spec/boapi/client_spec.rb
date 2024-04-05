@@ -6,16 +6,17 @@ RSpec.describe 'Client' do
 
   context 'without authentication' do
     let(:response) { Boapi::Client.new(account_id: account_id, account_secret: rand(10).to_s).currencies }
+    let(:http_status) { 401 }
 
     let(:url) { "#{Boapi.configuration.api_host}/api/v1/currencies" }
 
     before do
       stub_request(:get, url)
-        .to_return(status: 401, body: SupportResponseFixtures.error_without_authentification_response)
+        .to_return(status: http_status, body: SupportResponseFixtures.error_without_authentification_response)
     end
 
     it 'returns error response' do
-      expect(response.status).to be 401
+      expect(response.status).to be http_status
 
       expect(response.success?).to be false
       expect(response.error?).to be true
@@ -25,16 +26,17 @@ RSpec.describe 'Client' do
 
   describe '.health' do
     let(:response) { Boapi::Client.new(account_id: account_id, account_secret: account_secret).health }
+    let(:http_status) { 200 }
 
     let(:url) { "#{Boapi.configuration.api_host}/api/health" }
 
     before do
       stub_request(:get, url)
-        .to_return(status: 200, body: SupportResponseFixtures.health_response)
+        .to_return(status: http_status, body: SupportResponseFixtures.health_response)
     end
 
     it 'returns successful response' do
-      expect(response.status).to be 200
+      expect(response.status).to be http_status
 
       expect(response.success?).to be true
       expect(response.error?).to be false
@@ -44,16 +46,17 @@ RSpec.describe 'Client' do
 
   describe '.currencies' do
     let(:response) { Boapi::Client.new(account_id: account_id, account_secret: account_secret).currencies }
+    let(:http_status) { 200 }
 
     let(:url) { "#{Boapi.configuration.api_host}/api/v1/currencies" }
 
     before do
       stub_request(:get, url)
-        .to_return(status: 200, body: CurrencyResponseFixtures.successful_currencies_response)
+        .to_return(status: http_status, body: CurrencyResponseFixtures.successful_currencies_response)
     end
 
     it 'returns successful response' do
-      expect(response.status).to be 200
+      expect(response.status).to be http_status
 
       expect(response.success?).to be true
       expect(response.error?).to be false
@@ -65,6 +68,7 @@ RSpec.describe 'Client' do
     let(:response) do
       Boapi::Client.new(account_id: account_id, account_secret: account_secret).transactions_count(params)
     end
+    let(:http_status) { 422 }
 
     let(:url) { "#{Boapi.configuration.api_host}/api/v2/transactions/count" }
 
@@ -72,11 +76,11 @@ RSpec.describe 'Client' do
       let(:params) { {} }
 
       before do
-        stub_request(:post, url).to_return(status: 422, body: TransactionResponseFixtures.error_transactions_count_response)
+        stub_request(:post, url).to_return(status: http_status, body: TransactionResponseFixtures.error_transactions_count_response)
       end
 
       it 'returns error' do
-        expect(response.status).to be 422
+        expect(response.status).to be http_status
         expect(response.success?).to be false
         expect(response.error?).to be true
         expect(response.error).to eq(TransactionResponseFixtures.error_transactions_count_response_message)
@@ -85,14 +89,15 @@ RSpec.describe 'Client' do
 
     context 'when valid params given' do
       let(:params) { { filter: { date_from: '2023-01-20T00:00:00', date_to: '2023-03-22T00:00:00' } } }
+      let(:http_status) { 200 }
 
       before do
         stub_request(:post, url)
-          .to_return(status: 200, body: TransactionResponseFixtures.successful_transactions_count_response)
+          .to_return(status: http_status, body: TransactionResponseFixtures.successful_transactions_count_response)
       end
 
       it 'returns successful response' do
-        expect(response.status).to be 200
+        expect(response.status).to be http_status
 
         expect(response.success?).to be true
         expect(response.error?).to be false
@@ -112,14 +117,15 @@ RSpec.describe 'Client' do
       let(:params) do
         { filter: { date_from: '2023-01-20T00:00:00', date_to: '2023-03-22T00:00:00' }, options: { limit: 3 } }
       end
+      let(:http_status) { 200 }
 
       before do
         stub_request(:post, url)
-          .to_return(status: 200, body: TransactionResponseFixtures.successful_transactions_list_response)
+          .to_return(status: http_status, body: TransactionResponseFixtures.successful_transactions_list_response)
       end
 
       it 'returns successful response' do
-        expect(response.status).to be 200
+        expect(response.status).to be http_status
 
         expect(response.success?).to be true
         expect(response.error?).to be false
@@ -132,6 +138,7 @@ RSpec.describe 'Client' do
     let(:response) do
       Boapi::Client.new(account_id: account_id, account_secret: account_secret).get_rate(uid)
     end
+    let(:http_status) { 200 }
 
     let(:uid) { '961c3be2-c7b0-44ab-9f79-48cabd30c519' }
     let(:url) { "#{Boapi.configuration.api_host}/api/v2/rates/#{uid}" }
@@ -139,11 +146,11 @@ RSpec.describe 'Client' do
     context 'when valid params given' do
       before do
         stub_request(:get, url)
-          .to_return(status: 200, body: RateResponseFixtures.successful_get_rate_response)
+          .to_return(status: http_status, body: RateResponseFixtures.successful_get_rate_response)
       end
 
       it 'returns successful response' do
-        expect(response.status).to be 200
+        expect(response.status).to be http_status
 
         expect(response.success?).to be true
         expect(response.error?).to be false
@@ -156,6 +163,7 @@ RSpec.describe 'Client' do
     let(:response) do
       Boapi::Client.new(account_id: account_id, account_secret: account_secret).rates_list(params)
     end
+    let(:http_status) { 200 }
 
     let(:url) { "#{Boapi.configuration.api_host}/api/v2/rates" }
 
@@ -164,11 +172,11 @@ RSpec.describe 'Client' do
 
       before do
         stub_request(:get, url).with(query: params)
-          .to_return(status: 200, body: RateResponseFixtures.successful_rates_list_response)
+          .to_return(status: http_status, body: RateResponseFixtures.successful_rates_list_response)
       end
 
       it 'returns successful response' do
-        expect(response.status).to be 200
+        expect(response.status).to be http_status
 
         expect(response.success?).to be true
         expect(response.error?).to be false
@@ -181,6 +189,7 @@ RSpec.describe 'Client' do
     let(:response) do
       Boapi::Client.new(account_id: account_id, account_secret: account_secret).create_rate(params)
     end
+    let(:http_status) { 201 }
 
     let(:url) { "#{Boapi.configuration.api_host}/api/v2/rates" }
     let(:gateway_id) { 123 }
@@ -197,11 +206,11 @@ RSpec.describe 'Client' do
 
     before do
       stub_request(:post, url).with(body: params.to_json)
-        .to_return(status: 201, body: RateResponseFixtures.successful_create_rate_response)
+        .to_return(status: http_status, body: RateResponseFixtures.successful_create_rate_response)
     end
 
     it 'returns successful response' do
-      expect(response.status).to be 201
+      expect(response.status).to be http_status
 
       expect(response.success?).to be true
       expect(response.error?).to be false
