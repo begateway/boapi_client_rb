@@ -40,6 +40,10 @@ module Boapi
       send_request(:get, rate_path(id))
     end
 
+    def update_rate(id, params)
+      send_request(:patch, rate_path(id), params)
+    end
+
     def send_request(method, path, params = nil)
       response =
         begin

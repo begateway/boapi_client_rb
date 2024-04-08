@@ -217,4 +217,38 @@ RSpec.describe 'Client' do
       expect(response.data).to eq(RateResponseFixtures.successful_create_rate_response_message)
     end
   end
+
+  describe '.update rate' do
+    let(:response) do
+      Boapi::Client.new(account_id: account_id, account_secret: account_secret).update_rate(uid, params)
+    end
+    let(:http_status) { 200 }
+
+    let(:uid) { '961c3be2-c7b0-44ab-9f79-48cabd30c519' }
+    let(:url) { "#{Boapi.configuration.api_host}/api/v2/rates/#{uid}" }
+    let(:params) do
+      {
+        rate: {
+          currency: 'BYN',
+          rolling_reserve_days: 1,
+          rolling_reserve_rate: 1.1,
+          psp_authorization_declined_fee: 75,
+          psp_capture_declined_fee: 120,
+        }
+      }
+    end
+
+    before do
+      stub_request(:patch, url).with(body: params.to_json)
+                              .to_return(status: http_status, body: RateResponseFixtures.successful_update_rate_response)
+    end
+
+    it 'returns successful response' do
+      expect(response.status).to be http_status
+
+      expect(response.success?).to be true
+      expect(response.error?).to be false
+      expect(response.data).to eq(RateResponseFixtures.successful_update_rate_response_message)
+    end
+  end
 end
