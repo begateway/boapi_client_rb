@@ -251,4 +251,28 @@ RSpec.describe 'Client' do
       expect(response.data).to eq(RateResponseFixtures.successful_update_rate_response_message)
     end
   end
+
+  describe '.delete_rate' do
+    let(:response) do
+      Boapi::Client.new(account_id: account_id, account_secret: account_secret).delete_rate(uid)
+    end
+    let(:http_status) { 204 }
+
+    let(:uid) { '961c3be2-c7b0-44ab-9f79-48cabd30c519' }
+    let(:url) { "#{Boapi.configuration.api_host}/api/v2/rates/#{uid}" }
+
+    context 'when valid params given' do
+      before do
+        stub_request(:delete, url)
+          .to_return(status: http_status, body: nil)
+      end
+
+      it 'returns successful response' do
+        expect(response.status).to be http_status
+
+        expect(response.success?).to be true
+        expect(response.error?).to be false
+      end
+    end
+  end
 end

@@ -44,6 +44,10 @@ module Boapi
       send_request(:patch, rate_path(id), params)
     end
 
+    def delete_rate(id)
+      send_request(:delete, rate_path(id))
+    end
+
     def send_request(method, path, params = nil)
       response =
         begin
