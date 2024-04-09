@@ -45,7 +45,7 @@ response = client.health
 response.status   # 200
 response.success? # true
 response.data
-# {"click"=>true, "healthy"=>true, "pg"=>true, "rabbitmq"=>true, "redis"=>true, "version"=>"1.2.34"}
+# {"version"=>"1.0.16", "details"=>{"pg"=>true, "redis"=>true, "clickhouse"=>true, "rabbitmq"=>true}, "commit"=>"78dhdo8fd92v9499affw357dr8cd9g9vr71f84f4", "healthy"=>true}
 ```
 
 Currencies
