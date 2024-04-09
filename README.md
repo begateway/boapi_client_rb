@@ -98,11 +98,11 @@ response.data
 # {"id"=>"53huht87-reh8-448t-8v78-b10f45hh672a", "currency"=>"USD", "created_at"=>"2023-05-29T14:12:10.000000Z", "gateway_id"=>1, "apply_from"=>"2023-05-28T13:00:00.000000Z", "rolling_reserve_days"=>3, "psp_capture_declined_fee"=>0 ...
 ```
 
-Rate
+Get rate
 
 ```ruby
-id = '53huht87-reh8-448t-8v78-b10f45hh672a'
-response = client.get_rate(id)
+uid = '53huht87-reh8-448t-8v78-b10f45hh672a'
+response = client.get_rate(uid)
 response.data
 # {"id"=>"53huht87-reh8-448t-8v78-b10f45hh672a", "currency"=>"USD", "psp_capture_declined_fee"=>0, "psp_capture_max_commission"=>0, "psp_capture_min_commission"=>0, "psp_capture_successful_fee"=>0, "psp_void_declined_fee"=>0, "psp_void_max_commission"=>0, "psp_void_min_commission"=>0, "psp_void_successful_fee"=>0} ...
 ```
@@ -114,6 +114,33 @@ params = { currency: 'USD', gateway_id: 1 }
 response = client.rates_list(params)
 response.data
 # {"rates"=>[{"id"=>"53huht87-reh8-448t-8v78-b10f45hh672a", "currency"=>"USD", "apply_from"=>"2023-05-28T13:00:00.000000Z"}, {"id"=>"7712h4sa-wl89-5i7i-96dy-e780921cra73", "currency"=>"USD", "apply_from"=>"2023-05-28T13:00:00.000000Z"}]}
+```
+
+Update rate
+
+```ruby
+uid = "157fadb4-4122-4b9a-a6d3-ed13e074ca25"
+params = { rate: { id: uid, currency: "USD", created_at: "2023-05-29T17:12:10+03:00", apply_from: "2023-05-28T16:00:00+03:00", gateway_id: 1, rolling_reserve_days: 3 } }
+client.create_rate(params)
+updated_params = { rate: { currency: "EUR", rolling_reserve_days: 4, bank_capture_successful_rate: 1.75, bank_capture_declined_fee: 7 } }
+response = client.update_rate(uid, updated_params)
+response.data
+# {"id"=>"157fadb4-4122-4b9a-a6d3-ed13e074ca25", "currency"=>"EUR", "rolling_reserve_days"=>4, "bank_capture_successful_rate"=>"1.75",
+"bank_capture_declined_fee"=>7 ...
+```
+
+Delete rate
+
+```ruby
+uid = "c1e7595a-1af7-4d5f-9c0c-206542466859"
+params = { rate: { id: uid, currency: "USD", created_at: "2023-05-29T17:12:10+03:00", apply_from: "2023-05-28T16:00:00+03:00", gateway_id: 1, rolling_reserve_days: 3 } }
+client.create_rate(params)
+client.get_rate(uid).data['id']
+# c1e7595a-1af7-4d5f-9c0c-206542466859
+
+response = client.delete_rate(uid)
+response.status
+# 204
 ```
 
 ## Errors
