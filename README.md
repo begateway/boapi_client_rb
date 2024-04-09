@@ -101,8 +101,8 @@ response.data
 Get rate
 
 ```ruby
-uid = '53huht87-reh8-448t-8v78-b10f45hh672a'
-response = client.get_rate(uid)
+id = '53huht87-reh8-448t-8v78-b10f45hh672a'
+response = client.get_rate(id)
 response.data
 # {"id"=>"53huht87-reh8-448t-8v78-b10f45hh672a", "currency"=>"USD", "psp_capture_declined_fee"=>0, "psp_capture_max_commission"=>0, "psp_capture_min_commission"=>0, "psp_capture_successful_fee"=>0, "psp_void_declined_fee"=>0, "psp_void_max_commission"=>0, "psp_void_min_commission"=>0, "psp_void_successful_fee"=>0} ...
 ```
@@ -119,11 +119,11 @@ response.data
 Update rate
 
 ```ruby
-uid = "157fadb4-4122-4b9a-a6d3-ed13e074ca25"
-params = { rate: { id: uid, currency: "USD", created_at: "2023-05-29T17:12:10+03:00", apply_from: "2023-05-28T16:00:00+03:00", gateway_id: 1, rolling_reserve_days: 3 } }
+id = "157fadb4-4122-4b9a-a6d3-ed13e074ca25"
+params = { rate: { id: id, currency: "USD", created_at: "2023-05-29T17:12:10+03:00", apply_from: "2023-05-28T16:00:00+03:00", gateway_id: 1, rolling_reserve_days: 3 } }
 client.create_rate(params)
 updated_params = { rate: { currency: "EUR", rolling_reserve_days: 4, bank_capture_successful_rate: 1.75, bank_capture_declined_fee: 7 } }
-response = client.update_rate(uid, updated_params)
+response = client.update_rate(id, updated_params)
 response.data
 # {"id"=>"157fadb4-4122-4b9a-a6d3-ed13e074ca25", "currency"=>"EUR", "rolling_reserve_days"=>4, "bank_capture_successful_rate"=>"1.75",
 "bank_capture_declined_fee"=>7 ...
@@ -132,13 +132,13 @@ response.data
 Delete rate
 
 ```ruby
-uid = "c1e7595a-1af7-4d5f-9c0c-206542466859"
-params = { rate: { id: uid, currency: "USD", created_at: "2023-05-29T17:12:10+03:00", apply_from: "2023-05-28T16:00:00+03:00", gateway_id: 1, rolling_reserve_days: 3 } }
+id = "c1e7595a-1af7-4d5f-9c0c-206542466859"
+params = { rate: { id: id, currency: "USD", created_at: "2023-05-29T17:12:10+03:00", apply_from: "2023-05-28T16:00:00+03:00", gateway_id: 1, rolling_reserve_days: 3 } }
 client.create_rate(params)
-client.get_rate(uid).data['id']
+client.get_rate(id).data['id']
 # c1e7595a-1af7-4d5f-9c0c-206542466859
 
-response = client.delete_rate(uid)
+response = client.delete_rate(id)
 response.status
 # 204
 ```
