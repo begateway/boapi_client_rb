@@ -52,7 +52,7 @@ module Boapi
       response =
         begin
           connection.public_send(method, path, params) do |request|
-            request.headers['Content-Type'] = 'application/json' if [:post, :put, :patch].include?(method)
+            request.headers['Content-Type'] = 'application/json' if %i[post put patch].include?(method)
           end
         rescue Faraday::Error => e
           Boapi.configuration.logger.error("BOAPI::CLIENT::FARADAY::ERROR :: #{e}")

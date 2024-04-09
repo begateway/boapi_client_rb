@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module CurrencyResponseFixtures
+module CurrencyFixtures
   module_function
 
   def successful_currencies_response

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module SupportResponseFixtures
+module SupportFixtures
   module_function
 
   def health_response_message
@@ -11,14 +11,14 @@ module SupportResponseFixtures
     %({"data":#{health_response_message.to_json}})
   end
 
-  def error_without_authentification_response_message
+  def failed_without_authentification_response_message
     { 'code' => 'unauthorized',
       'friendly_message' => "You can't have access to this area",
       'help' => 'https://doc.ecomcharge.com/codes/unauthorized',
       'message' => 'Unauthorized' }
   end
 
-  def error_without_authentification_response
-    %({"error":#{error_without_authentification_response_message.to_json}})
+  def failed_without_authentification_response
+    %({"error":#{failed_without_authentification_response_message.to_json}})
   end
 end

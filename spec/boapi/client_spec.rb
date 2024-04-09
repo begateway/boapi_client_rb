@@ -12,7 +12,7 @@ RSpec.describe 'Client' do
 
     before do
       stub_request(:get, url)
-        .to_return(status: http_status, body: SupportResponseFixtures.error_without_authentification_response)
+        .to_return(status: http_status, body: SupportFixtures.failed_without_authentification_response)
     end
 
     it 'returns error response' do
@@ -20,7 +20,7 @@ RSpec.describe 'Client' do
 
       expect(response.success?).to be false
       expect(response.error?).to be true
-      expect(response.error).to eq(SupportResponseFixtures.error_without_authentification_response_message)
+      expect(response.error).to eq(SupportFixtures.failed_without_authentification_response_message)
     end
   end
 
@@ -30,9 +30,11 @@ RSpec.describe 'Client' do
 
     let(:url) { "#{Boapi.configuration.api_host}/api/health" }
 
+    # subject { client.health }
+
     before do
       stub_request(:get, url)
-        .to_return(status: http_status, body: SupportResponseFixtures.health_response)
+        .to_return(status: http_status, body: SupportFixtures.health_response)
     end
 
     it 'returns successful response' do
@@ -40,7 +42,7 @@ RSpec.describe 'Client' do
 
       expect(response.success?).to be true
       expect(response.error?).to be false
-      expect(response.data).to eq(SupportResponseFixtures.health_response_message)
+      expect(response.data).to eq(SupportFixtures.health_response_message)
     end
   end
 
@@ -52,7 +54,7 @@ RSpec.describe 'Client' do
 
     before do
       stub_request(:get, url)
-        .to_return(status: http_status, body: CurrencyResponseFixtures.successful_currencies_response)
+        .to_return(status: http_status, body: CurrencyFixtures.successful_currencies_response)
     end
 
     it 'returns successful response' do
@@ -60,7 +62,7 @@ RSpec.describe 'Client' do
 
       expect(response.success?).to be true
       expect(response.error?).to be false
-      expect(response.data).to eq(CurrencyResponseFixtures.successful_currencies_response_message)
+      expect(response.data).to eq(CurrencyFixtures.successful_currencies_response_message)
     end
   end
 
@@ -76,14 +78,15 @@ RSpec.describe 'Client' do
       let(:params) { {} }
 
       before do
-        stub_request(:post, url).to_return(status: http_status, body: TransactionResponseFixtures.error_transactions_count_response)
+        stub_request(:post, url)
+          .to_return(status: http_status, body: TransactionFixtures.failed_transactions_count_response)
       end
 
       it 'returns error' do
         expect(response.status).to be http_status
         expect(response.success?).to be false
         expect(response.error?).to be true
-        expect(response.error).to eq(TransactionResponseFixtures.error_transactions_count_response_message)
+        expect(response.error).to eq(TransactionFixtures.failed_transactions_count_response_message)
       end
     end
 
@@ -93,7 +96,7 @@ RSpec.describe 'Client' do
 
       before do
         stub_request(:post, url)
-          .to_return(status: http_status, body: TransactionResponseFixtures.successful_transactions_count_response)
+          .to_return(status: http_status, body: TransactionFixtures.successful_transactions_count_response)
       end
 
       it 'returns successful response' do
@@ -101,7 +104,7 @@ RSpec.describe 'Client' do
 
         expect(response.success?).to be true
         expect(response.error?).to be false
-        expect(response.data).to eq(TransactionResponseFixtures.successful_transactions_count_response_message)
+        expect(response.data).to eq(TransactionFixtures.successful_transactions_count_response_message)
       end
     end
   end
@@ -121,7 +124,7 @@ RSpec.describe 'Client' do
 
       before do
         stub_request(:post, url)
-          .to_return(status: http_status, body: TransactionResponseFixtures.successful_transactions_list_response)
+          .to_return(status: http_status, body: TransactionFixtures.successful_transactions_list_response)
       end
 
       it 'returns successful response' do
@@ -129,7 +132,7 @@ RSpec.describe 'Client' do
 
         expect(response.success?).to be true
         expect(response.error?).to be false
-        expect(response.data).to eq(TransactionResponseFixtures.successful_transactions_list_response_message)
+        expect(response.data).to eq(TransactionFixtures.successful_transactions_list_response_message)
       end
     end
   end
@@ -146,7 +149,7 @@ RSpec.describe 'Client' do
     context 'when valid params given' do
       before do
         stub_request(:get, url)
-          .to_return(status: http_status, body: RateResponseFixtures.successful_get_rate_response)
+          .to_return(status: http_status, body: RateFixtures.successful_get_rate_response)
       end
 
       it 'returns successful response' do
@@ -154,7 +157,7 @@ RSpec.describe 'Client' do
 
         expect(response.success?).to be true
         expect(response.error?).to be false
-        expect(response.data).to eq(RateResponseFixtures.successful_get_rate_response_message)
+        expect(response.data).to eq(RateFixtures.successful_get_rate_response_message)
       end
     end
   end
@@ -172,7 +175,7 @@ RSpec.describe 'Client' do
 
       before do
         stub_request(:get, url).with(query: params)
-          .to_return(status: http_status, body: RateResponseFixtures.successful_rates_list_response)
+                               .to_return(status: http_status, body: RateFixtures.successful_rates_list_response)
       end
 
       it 'returns successful response' do
@@ -180,7 +183,7 @@ RSpec.describe 'Client' do
 
         expect(response.success?).to be true
         expect(response.error?).to be false
-        expect(response.data).to eq(RateResponseFixtures.successful_rates_list_response_message)
+        expect(response.data).to eq(RateFixtures.successful_rates_list_response_message)
       end
     end
   end
@@ -206,7 +209,7 @@ RSpec.describe 'Client' do
 
     before do
       stub_request(:post, url).with(body: params.to_json)
-        .to_return(status: http_status, body: RateResponseFixtures.successful_create_rate_response)
+                              .to_return(status: http_status, body: RateFixtures.successful_create_rate_response)
     end
 
     it 'returns successful response' do
@@ -214,7 +217,7 @@ RSpec.describe 'Client' do
 
       expect(response.success?).to be true
       expect(response.error?).to be false
-      expect(response.data).to eq(RateResponseFixtures.successful_create_rate_response_message)
+      expect(response.data).to eq(RateFixtures.successful_create_rate_response_message)
     end
   end
 
@@ -233,14 +236,14 @@ RSpec.describe 'Client' do
           rolling_reserve_days: 1,
           rolling_reserve_rate: 1.1,
           psp_authorization_declined_fee: 75,
-          psp_capture_declined_fee: 120,
+          psp_capture_declined_fee: 120
         }
       }
     end
 
     before do
       stub_request(:patch, url).with(body: params.to_json)
-                              .to_return(status: http_status, body: RateResponseFixtures.successful_update_rate_response)
+                               .to_return(status: http_status, body: RateFixtures.successful_update_rate_response)
     end
 
     it 'returns successful response' do
@@ -248,7 +251,7 @@ RSpec.describe 'Client' do
 
       expect(response.success?).to be true
       expect(response.error?).to be false
-      expect(response.data).to eq(RateResponseFixtures.successful_update_rate_response_message)
+      expect(response.data).to eq(RateFixtures.successful_update_rate_response_message)
     end
   end
 

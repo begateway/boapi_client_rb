@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module TransactionResponseFixtures
+module TransactionFixtures
   module_function
 
   def successful_transactions_count_response_message
@@ -11,17 +11,18 @@ module TransactionResponseFixtures
     %({"data":#{successful_transactions_count_response_message.to_json}})
   end
 
-  def error_transactions_count_response_message
+  def failed_transactions_count_response_message
     { 'code' => 'unprocessable_entity',
       'friendly_message' => 'Filter is required.',
       'help' => 'https://doc.ecomcharge.com/codes/unprocessable_entity',
       'message' => 'Unprocessable entity' }
   end
 
-  def error_transactions_count_response
-    %({"error":#{error_transactions_count_response_message.to_json}})
+  def failed_transactions_count_response
+    %({"error":#{failed_transactions_count_response_message.to_json}})
   end
 
+  # rubocop:disable Metrics/MethodLength
   def successful_transactions_list_response_message
     { 'pagination' => {
         'date_from' => '2023-02-20T09:02:54.516000Z', 'date_to' => '2023-02-20T11:13:43.748000Z',
@@ -39,6 +40,7 @@ module TransactionResponseFixtures
           'type' => 'tokenization', 'uid' => 'a1b993aa-d340-4d52-a0ce-92e5a30ab6a6' }
       ] }
   end
+  # rubocop:enable Metrics/MethodLength
 
   def successful_transactions_list_response
     %({"data":#{successful_transactions_list_response_message.to_json}})

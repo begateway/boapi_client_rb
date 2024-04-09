@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-module RateResponseFixtures
+# rubocop:disable Metrics/ModuleLength
+# rubocop:disable Metrics/MethodLength
+module RateFixtures
   module_function
 
   def successful_get_rate_response_message
@@ -366,3 +368,5 @@ module RateResponseFixtures
     %({"data":#{successful_update_rate_response_message.to_json}})
   end
 end
+# rubocop:enable Metrics/ModuleLength
+# rubocop:enable Metrics/MethodLength
