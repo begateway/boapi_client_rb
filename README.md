@@ -45,7 +45,7 @@ response = client.health
 response.status   # 200
 response.success? # true
 response.data
-# {"click"=>true, "healthy"=>true, "pg"=>true, "rabbitmq"=>true, "redis"=>true, "version"=>"1.2.34"}
+# {"version"=>"1.0.16", "details"=>{"pg"=>true, "redis"=>true, "clickhouse"=>true, "rabbitmq"=>true}, "commit"=>"78dhdo8fd92v9499affw357dr8cd9g9vr71f84f4", "healthy"=>true}
 ```
 
 Currencies
@@ -95,16 +95,16 @@ Create rate
 params = { rate: { currency: "USD", created_at: "2023-05-29T17:12:10+03:00", apply_from: "2023-05-28T16:00:00+03:00", gateway_id: 1, rolling_reserve_days: 3 } }
 response = client.create_rate(params)
 response.data
-# {"data"=>{"id"=>"53huht87-reh8-448t-8v78-b10f45hh672a", "currency"=>"USD", "created_at"=>"2023-05-29T14:12:10.000000Z", "gateway_id"=>1, "apply_from"=>"2023-05-28T13:00:00.000000Z", "rolling_reserve_days"=>3 ...
+# {"id"=>"53huht87-reh8-448t-8v78-b10f45hh672a", "currency"=>"USD", "created_at"=>"2023-05-29T14:12:10.000000Z", "gateway_id"=>1, "apply_from"=>"2023-05-28T13:00:00.000000Z", "rolling_reserve_days"=>3, "psp_capture_declined_fee"=>0 ...
 ```
 
-Rate
+Get rate
 
 ```ruby
 id = '53huht87-reh8-448t-8v78-b10f45hh672a'
 response = client.get_rate(id)
 response.data
-# {"data"=>{"id"=>"53huht87-reh8-448t-8v78-b10f45hh672a", "currency"=>"USD", "rates"=>{"psp"=>{"capture"=>{"declined_fee"=>0, "max_commission"=>0, "min_commission"=>0, "successful_fee"=>0}, "void"=>{"declined_fee"=>0, "max_commission"=>0, "min_commission"=>0, "successful_fee"=>0} ...
+# {"id"=>"53huht87-reh8-448t-8v78-b10f45hh672a", "currency"=>"USD", "psp_capture_declined_fee"=>0, "psp_capture_max_commission"=>0, "psp_capture_min_commission"=>0, "psp_capture_successful_fee"=>0, "psp_void_declined_fee"=>0, "psp_void_max_commission"=>0, "psp_void_min_commission"=>0, "psp_void_successful_fee"=>0} ...
 ```
 
 Rates list
@@ -113,7 +113,34 @@ Rates list
 params = { currency: 'USD', gateway_id: 1 }
 response = client.rates_list(params)
 response.data
-# {"data"=>{"rates"=>[{"id"=>"53huht87-reh8-448t-8v78-b10f45hh672a", "currency"=>"USD", "apply_from"=>"2023-05-28T13:00:00.000000Z"}, {"id"=>"7712h4sa-wl89-5i7i-96dy-e780921cra73", "currency"=>"USD", "apply_from"=>"2023-05-28T13:00:00.000000Z"}]}}
+# {"rates"=>[{"id"=>"53huht87-reh8-448t-8v78-b10f45hh672a", "currency"=>"USD", "apply_from"=>"2023-05-28T13:00:00.000000Z"}, {"id"=>"7712h4sa-wl89-5i7i-96dy-e780921cra73", "currency"=>"USD", "apply_from"=>"2023-05-28T13:00:00.000000Z"}]}
+```
+
+Update rate
+
+```ruby
+id = "157fadb4-4122-4b9a-a6d3-ed13e074ca25"
+params = { rate: { id: id, currency: "USD", created_at: "2023-05-29T17:12:10+03:00", apply_from: "2023-05-28T16:00:00+03:00", gateway_id: 1, rolling_reserve_days: 3 } }
+client.create_rate(params)
+updated_params = { rate: { currency: "EUR", rolling_reserve_days: 4, bank_capture_successful_rate: 1.75, bank_capture_declined_fee: 7 } }
+response = client.update_rate(id, updated_params)
+response.data
+# {"id"=>"157fadb4-4122-4b9a-a6d3-ed13e074ca25", "currency"=>"EUR", "rolling_reserve_days"=>4, "bank_capture_successful_rate"=>"1.75",
+"bank_capture_declined_fee"=>7 ...
+```
+
+Delete rate
+
+```ruby
+id = "c1e7595a-1af7-4d5f-9c0c-206542466859"
+params = { rate: { id: id, currency: "USD", created_at: "2023-05-29T17:12:10+03:00", apply_from: "2023-05-28T16:00:00+03:00", gateway_id: 1, rolling_reserve_days: 3 } }
+client.create_rate(params)
+client.get_rate(id).data['id']
+# c1e7595a-1af7-4d5f-9c0c-206542466859
+
+response = client.delete_rate(id)
+response.status
+# 204
 ```
 
 ## Errors

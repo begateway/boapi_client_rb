@@ -40,10 +40,20 @@ module Boapi
       send_request(:get, rate_path(id))
     end
 
+    def update_rate(id, params)
+      send_request(:patch, rate_path(id), params)
+    end
+
+    def delete_rate(id)
+      send_request(:delete, rate_path(id))
+    end
+
     def send_request(method, path, params = nil)
       response =
         begin
-          connection.public_send(method, path, params)
+          connection.public_send(method, path, params) do |request|
+            request.headers['Content-Type'] = 'application/json' if %i[post put patch].include?(method)
+          end
         rescue Faraday::Error => e
           Boapi.configuration.logger.error("BOAPI::CLIENT::FARADAY::ERROR :: #{e}")
 
@@ -73,7 +83,6 @@ module Boapi
         conn.request :json
         conn.response :json
         conn.proxy Boapi.configuration.proxy if Boapi.configuration.proxy
-        conn.headers['Content-Type'] = 'application/json'
         conn.headers['Accept'] = 'application/json'
         conn.adapter Boapi.configuration.adapter
         conn.options.timeout = Boapi.configuration.timeout
