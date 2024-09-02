@@ -165,6 +165,34 @@ RSpec.describe 'Client' do
     end
   end
 
+  describe '.transactions_deep_search' do
+    let(:response) do
+      Boapi::Client.new(account_id: account_id, account_secret: account_secret).transactions_deep_search(params)
+    end
+
+    let(:url) { "#{Boapi.configuration.api_host}/api/v2/transactions/deep_search" }
+
+    context 'when valid params given' do
+      let(:params) do
+        { filter: { date_from: '2023-01-20T00:00:00', date_to: '2023-03-22T00:00:00' }, options: { limit: 3 } }
+      end
+      let(:http_status) { 200 }
+
+      before do
+        stub_request(:post, url)
+          .to_return(status: http_status, body: TransactionFixtures.successful_transactions_list_response)
+      end
+
+      it 'returns successful response' do
+        expect(response.status).to be http_status
+
+        expect(response.success?).to be true
+        expect(response.error?).to be false
+        expect(response.data).to eq(TransactionFixtures.successful_transactions_list_response_message)
+      end
+    end
+  end
+
   describe '.get_rate' do
     let(:response) do
       Boapi::Client.new(account_id: account_id, account_secret: account_secret).get_rate(uid)

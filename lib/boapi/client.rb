@@ -32,6 +32,10 @@ module Boapi
       send_request(:post, '/api/v2/transactions/search', params)
     end
 
+    def transactions_deep_search(params)
+      send_request(:post, '/api/v2/transactions/deep_search', params)
+    end
+
     def create_rate(params)
       send_request(:post, rate_path, params)
     end
