@@ -36,6 +36,10 @@ module Boapi
       send_request(:post, rate_path, params)
     end
 
+    def migrate_rate(params)
+      send_request(:post, rate_path('migrate'), params)
+    end
+
     def rates_list(params)
       send_request(:get, rate_path, params)
     end

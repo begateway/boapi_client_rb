@@ -249,6 +249,39 @@ RSpec.describe 'Client' do
     end
   end
 
+  describe '.migrate rate' do
+    let(:response) do
+      Boapi::Client.new(account_id: account_id, account_secret: account_secret).migrate_rate(params)
+    end
+    let(:http_status) { 201 }
+
+    let(:url) { "#{Boapi.configuration.api_host}/api/v2/rates/migrate" }
+    let(:gateway_id) { 123 }
+    let(:params) do
+      {
+        rate: {
+          currency: 'EUR',
+          apply_from: '2021-06-08T00:00:00.000Z',
+          created_at: '2021-06-08T00:00:00.000Z',
+          gateway_id: gateway_id
+        }
+      }
+    end
+
+    before do
+      stub_request(:post, url).with(body: params.to_json)
+                              .to_return(status: http_status, body: RateFixtures.successful_create_rate_response)
+    end
+
+    it 'returns successful response' do
+      expect(response.status).to be http_status
+
+      expect(response.success?).to be true
+      expect(response.error?).to be false
+      expect(response.data).to eq(RateFixtures.successful_create_rate_response_message)
+    end
+  end
+
   describe '.update rate' do
     let(:response) do
       Boapi::Client.new(account_id: account_id, account_secret: account_secret).update_rate(uid, params)
