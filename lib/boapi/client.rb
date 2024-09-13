@@ -36,6 +36,10 @@ module Boapi
       send_request(:post, '/api/v2/transactions/deep_search', params)
     end
 
+    def merchant_balances(id, params)
+      send_request(:get, "/api/v2/psp/balances/merchants/#{id}", params)
+    end
+
     def create_rate(params)
       send_request(:post, rate_path, params)
     end
