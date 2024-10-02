@@ -40,6 +40,10 @@ module Boapi
       send_request(:get, "/api/v2/psp/balances/merchants/#{id}", params)
     end
 
+    def create_balance_record(params)
+      send_request(:post, '/api/v2/balance_records', params)
+    end
+
     def create_rate(params)
       send_request(:post, rate_path, params)
     end
