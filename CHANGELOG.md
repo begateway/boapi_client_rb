@@ -1,5 +1,10 @@
 ## [Unreleased]
 
+## [0.6.0] - 2024-10-09
+
+- Add merchant balance endpoint
+- Add create balance_record endpoint
+
 ## [0.5.0] - 2024-09-02
 
 - Add deep search endpoint

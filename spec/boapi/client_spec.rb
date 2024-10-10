@@ -193,6 +193,75 @@ RSpec.describe 'Client' do
     end
   end
 
+  describe '.merchant_balances' do
+    let(:response) do
+      Boapi::Client.new(account_id: account_id, account_secret: account_secret).merchant_balances(id, params)
+    end
+    let(:http_status) { 200 }
+
+    let(:id) { '47' }
+    let(:url) { "#{Boapi.configuration.api_host}/api/v2/psp/balances/merchants/#{id}" }
+
+    context 'when valid params given' do
+      let(:params) { { currency: 'BYN', as_of_date: '2024-09-13T00:00:00.145823Z' } }
+
+      before do
+        stub_request(:get, url).with(query: params)
+                               .to_return(
+                                 status: http_status,
+                                 body: BalancesFixtures.successful_merchant_balances_response
+                               )
+      end
+
+      it 'returns successful response' do
+        expect(response.status).to be http_status
+
+        expect(response.success?).to be true
+        expect(response.error?).to be false
+        expect(response.data).to eq(BalancesFixtures.successful_merchant_balances_response_message)
+      end
+    end
+  end
+
+  describe '.create balance_record' do
+    let(:response) do
+      Boapi::Client.new(account_id: account_id, account_secret: account_secret).create_balance_record(params)
+    end
+    let(:http_status) { 201 }
+
+    let(:url) { "#{Boapi.configuration.api_host}/api/v2/balance_records" }
+    let(:params) do
+      {
+        balance_record: {
+          merchant_id: 12,
+          shop_id: 23,
+          gateway_id: 34,
+          type: 'adjustment',
+          amount: 1000,
+          currency: 'EUR',
+          description: 'Balance debit',
+          user_id: 45
+        }
+      }
+    end
+
+    before do
+      stub_request(:post, url).with(body: params.to_json)
+                              .to_return(
+                                status: http_status,
+                                body: BalanceRecordFixtures.successful_create_balance_record_response
+                              )
+    end
+
+    it 'returns successful response' do
+      expect(response.status).to be http_status
+
+      expect(response.success?).to be true
+      expect(response.error?).to be false
+      expect(response.data).to eq(BalanceRecordFixtures.successful_create_balance_record_response_message)
+    end
+  end
+
   describe '.get_rate' do
     let(:response) do
       Boapi::Client.new(account_id: account_id, account_secret: account_secret).get_rate(uid)

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    boapi (0.5.0)
+    boapi (0.6.0)
       faraday (> 0.7.6, < 1.0)
       faraday_middleware (> 0.1, < 1.0)
 
@@ -75,6 +75,7 @@ GEM
 PLATFORMS
   -darwin-21
   x86_64-darwin-21
+  x86_64-darwin-23
   x86_64-linux
 
 DEPENDENCIES

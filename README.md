@@ -174,6 +174,25 @@ response.status
 # 204
 ```
 
+Create balance_record (adjustment type only)
+
+```ruby
+params = { balance_record: { merchant_id: 12, shop_id: 23, gateway_id: 34, type: 'adjustment', amount: 1000, currency: 'EUR', description: 'Balance debit', user_id: 45 } }
+client.create_balance_record(params)
+response.data
+# {"balance_record"=>{"merchant_id"=>12, "shop_id"=>23, "gateway_id"=>34, "amount"=>1000, "currency"=>"EUR", "description"=>"[UserID:45] Balance debit", "type"=>"adjustment"}}
+```
+
+Get balance
+
+```ruby
+id = 47
+params = { currency: 'BYN', as_of_date: '2024-09-13T00:00:00.145823Z' }
+client.merchant_balances(id, params)
+response.data
+# {"balances"=>{"generated_at"=>"2024-08-30T13:02:00Z", "as_of_date"=>"2024-09-13T00:00:00.145823Z", "currency"=>"BYN", "merchant"=>{"id"=>47, "company_name"=>"John Deere LTD" ...
+```
+
 ## Errors
 
 Unauthorized
