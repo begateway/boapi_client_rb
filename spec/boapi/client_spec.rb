@@ -193,9 +193,9 @@ RSpec.describe 'Client' do
     end
   end
 
-  describe '.merchant_balances' do
+  describe '.merchant_balance' do
     let(:response) do
-      Boapi::Client.new(account_id: account_id, account_secret: account_secret).merchant_balances(id, params)
+      Boapi::Client.new(account_id: account_id, account_secret: account_secret).merchant_balance(id, params)
     end
     let(:http_status) { 200 }
 
@@ -209,7 +209,7 @@ RSpec.describe 'Client' do
         stub_request(:get, url).with(query: params)
                                .to_return(
                                  status: http_status,
-                                 body: BalancesFixtures.successful_merchant_balances_response
+                                 body: BalancesFixtures.successful_merchant_balance_response
                                )
       end
 
@@ -218,7 +218,7 @@ RSpec.describe 'Client' do
 
         expect(response.success?).to be true
         expect(response.error?).to be false
-        expect(response.data).to eq(BalancesFixtures.successful_merchant_balances_response_message)
+        expect(response.data).to eq(BalancesFixtures.successful_merchant_balance_response_message)
       end
     end
   end

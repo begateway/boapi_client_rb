@@ -4,7 +4,7 @@
 module BalancesFixtures
   module_function
 
-  def successful_merchant_balances_response_message
+  def successful_merchant_balance_response_message
     {
       'balances' => {
         'generated_at' => '2024-08-30T13:02:00Z',
@@ -38,8 +38,8 @@ module BalancesFixtures
     }
   end
 
-  def successful_merchant_balances_response
-    %({"data":#{successful_merchant_balances_response_message.to_json}})
+  def successful_merchant_balance_response
+    %({"data":#{successful_merchant_balance_response_message.to_json}})
   end
 end
 # rubocop:enable Metrics/MethodLength
