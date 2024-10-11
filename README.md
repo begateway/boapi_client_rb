@@ -188,7 +188,7 @@ Get balance
 ```ruby
 id = 47
 params = { currency: 'BYN', as_of_date: '2024-09-13T00:00:00.145823Z' }
-client.merchant_balances(id, params)
+client.merchant_balance(id, params)
 response.data
 # {"balances"=>{"generated_at"=>"2024-08-30T13:02:00Z", "as_of_date"=>"2024-09-13T00:00:00.145823Z", "currency"=>"BYN", "merchant"=>{"id"=>47, "company_name"=>"John Deere LTD" ...
 ```
