@@ -1,4 +1,9 @@
-## [Unreleased]
+## [Released]
+
+## [0.7.0] - 2024-10-30
+
+- Rename merchant balance for psp method
+- Add merchant balance endpoint
 
 ## [0.6.0] - 2024-10-09
 

@@ -193,14 +193,15 @@ RSpec.describe 'Client' do
     end
   end
 
-  describe '.merchant_balance' do
+  describe '.merchant_balances_for_psp' do
     let(:response) do
-      Boapi::Client.new(account_id: account_id, account_secret: account_secret).merchant_balance(id, params)
+      Boapi::Client.new(account_id: account_id, account_secret: account_secret)
+                   .merchant_balances_for_psp(merchant_id, params)
     end
     let(:http_status) { 200 }
 
-    let(:id) { '47' }
-    let(:url) { "#{Boapi.configuration.api_host}/api/v2/psp/balances/merchants/#{id}" }
+    let(:merchant_id) { '47' }
+    let(:url) { "#{Boapi.configuration.api_host}/api/v2/psp/balances/merchants/#{merchant_id}" }
 
     context 'when valid params given' do
       let(:params) { { currency: 'BYN', as_of_date: '2024-09-13T00:00:00.145823Z' } }
@@ -209,7 +210,7 @@ RSpec.describe 'Client' do
         stub_request(:get, url).with(query: params)
                                .to_return(
                                  status: http_status,
-                                 body: BalancesFixtures.successful_merchant_balance_response
+                                 body: BalancesFixtures.successful_merchant_balances_for_psp_response
                                )
       end
 
@@ -218,7 +219,37 @@ RSpec.describe 'Client' do
 
         expect(response.success?).to be true
         expect(response.error?).to be false
-        expect(response.data).to eq(BalancesFixtures.successful_merchant_balance_response_message)
+        expect(response.data).to eq(BalancesFixtures.successful_merchant_balances_for_psp_response_message)
+      end
+    end
+  end
+
+  describe '.merchant_balances' do
+    let(:response) do
+      Boapi::Client.new(account_id: account_id, account_secret: account_secret).merchant_balances(merchant_id, params)
+    end
+    let(:http_status) { 200 }
+
+    let(:merchant_id) { '47' }
+    let(:url) { "#{Boapi.configuration.api_host}/api/v2/balances/merchants/#{merchant_id}" }
+
+    context 'when valid params given' do
+      let(:params) { { currency: 'BYN', as_of_date: '2024-09-13T00:00:00.145823Z' } }
+
+      before do
+        stub_request(:get, url).with(query: params)
+                               .to_return(
+                                 status: http_status,
+                                 body: BalancesFixtures.successful_merchant_balances_response
+                               )
+      end
+
+      it 'returns successful response' do
+        expect(response.status).to be http_status
+
+        expect(response.success?).to be true
+        expect(response.error?).to be false
+        expect(response.data).to eq(BalancesFixtures.successful_merchant_balances_response_message)
       end
     end
   end
