@@ -183,12 +183,22 @@ response.data
 # {"balance_record"=>{"merchant_id"=>12, "shop_id"=>23, "gateway_id"=>34, "amount"=>1000, "currency"=>"EUR", "description"=>"[UserID:45] Balance debit", "type"=>"adjustment"}}
 ```
 
-Get balance
+Get merchant balances for psp
 
 ```ruby
 id = 47
 params = { currency: 'BYN', as_of_date: '2024-09-13T00:00:00.145823Z' }
-client.merchant_balance(id, params)
+client.merchant_balances_for_psp(merchant_id, params)
+response.data
+# {"balances"=>{"generated_at"=>"2024-08-30T13:02:00Z", "as_of_date"=>"2024-09-13T00:00:00.145823Z", "currency"=>"BYN", "merchant"=>{"id"=>47, "company_name"=>"John Deere LTD" ...
+```
+
+Get balances for merchant
+
+```ruby
+id = 47
+params = { currency: 'BYN', as_of_date: '2024-09-13T00:00:00.145823Z' }
+client.merchant_balances(id, params)
 response.data
 # {"balances"=>{"generated_at"=>"2024-08-30T13:02:00Z", "as_of_date"=>"2024-09-13T00:00:00.145823Z", "currency"=>"BYN", "merchant"=>{"id"=>47, "company_name"=>"John Deere LTD" ...
 ```
