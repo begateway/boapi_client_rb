@@ -201,7 +201,7 @@ RSpec.describe 'Client' do
     let(:http_status) { 200 }
 
     let(:merchant_id) { '47' }
-    let(:url) { "#{Boapi.configuration.api_host}/api/v2/psp/balances/merchants/#{merchant_id}" }
+    let(:url) { "#{Boapi.configuration.api_host}/api/v2/psp/merchants/#{merchant_id}/balances" }
 
     context 'when valid params given' do
       let(:params) { { currency: 'BYN', as_of_date: '2024-09-13T00:00:00.145823Z' } }
@@ -231,7 +231,7 @@ RSpec.describe 'Client' do
     let(:http_status) { 200 }
 
     let(:merchant_id) { '47' }
-    let(:url) { "#{Boapi.configuration.api_host}/api/v2/balances/merchants/#{merchant_id}" }
+    let(:url) { "#{Boapi.configuration.api_host}/api/v2/merchants/#{merchant_id}/balances" }
 
     context 'when valid params given' do
       let(:params) { { currency: 'BYN', as_of_date: '2024-09-13T00:00:00.145823Z' } }
