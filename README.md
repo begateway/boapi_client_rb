@@ -75,7 +75,7 @@ response = client.transactions_list(params)
 response.status   # 200
 response.success? # true
 response.data
-# {"pagination"=>{"date_from"=>"2023-02-20T09:02:54.516000Z", "date_to"=>"2023-02-20T09:02:54.516000Z", "date_type"=>"created_at", "has_next_page"=>true, "next_date"=>"2023-02-20T09:36:15.175000Z"}, "transactions"=>[{"amount"=>123, "created_at"=>"2023-02-270T09:12:54.516000Z", "currency"=>"trx_cur", "merchant_id"=>123, "paid_at"=>"2023-02-12T09:02:59.669000Z", "shop_id"=>123, "status"=>"trx_status", "type"=>"trx_type", "uid"=>"xxxxxxx-fa21-xxxx-xxxx-xxxxeec8661f"}ruby
+# {"pagination"=>{"date_from"=>"2023-02-20T09:02:54.516000Z", "date_to"=>"2023-02-20T09:02:54.516000Z", "date_type"=>"created_at", "has_next_page"=>true, "next_date"=>"2023-02-20T09:36:15.175000Z"}, "transactions"=>[{"amount"=>123, "created_at"=>"2023-02-270T09:12:54.516000Z", "currency"=>"trx_cur", "merchant_id"=>123, "paid_at"=>"2023-02-12T09:02:59.669000Z", "shop_id"=>123, "status"=>"trx_status", "type"=>"trx_type", "uid"=>"xxxxxxx-fa21-xxxx-xxxx-xxxxeec8661f"}
 ```
 
 Transactions list with response params
@@ -109,6 +109,17 @@ response.status   # 200
 response.success? # true
 response.data
 # {"pagination"=>{"date_from"=>"2023-02-20T09:02:59.669000Z", "date_to"=>"2023-02-20T09:02:59.669000Z", "date_type"=>"paid_at", "has_next_page"=>true, "next_date"=>"2023-02-20T09:36:15.994000Z"}, "transactions"=>[{"paid_at"=>"2023-02-20T09:12:34.567000Z", "provider_raw"=>{"ref_id"=>nil}, "shop_id"=>123, "uid"=>"e4800e1b-xxxx-xxxx-ae25-16f1xxxx661f"}]}
+```
+
+Transactions export with response params
+
+```ruby
+params = { response_parameters: "main", filter: { date_from: '2024-11-01T00:00:00.000000', date_to: '2024-11-02T00:00:00.000000', date_type: 'created_at', type: 'p2p' }, options: { limit: 1, sort_direction: 'desc' } }
+response = client.transactions_export(params)
+response.status   # 200
+response.success? # true
+response.data
+# {"data":{"pagination":{"date_type":"created_at","has_next_page":false,"date_from":"2024-11-01T08:58:46.705000Z","date_to":"2024-11-01T08:58:46.705000Z","uid_from":"6ca3d635-6841-4ac9-b583-a3bf0eafc160","uid_to":"6ca3d635-6841-4ac9-b583-a3bf0eafc160"},"transactions":[{"amount":100,"closed_at":null,"code":"S.0000","converted_amount":null,"converted_currency":null,"created_at":"2024-11-01T08:58:46.705000Z","currency":"BYN","description":"Testtransactionp2psLAA","expired_at":null,"fraud":"","friendly_message":"Транзакцияпроведенауспешно.","language":"ru","manually_corrected_at":null,"merchant_id":55,"message":"Successfullyprocessed","paid_at":"2024-11-01T08:58:50.589000Z","parent_uid":null,"product_id":null,"reason":null,"recurring_type":null,"settled_at":null,"shop_id":1990,"status":"successful","subscription_id":null,"test":false,"tracking_id":"tracking_id_000","type":"p2p","uid":"6ca3d635-6841-4ac9-b583-a3bf0eafc160","updated_at":"2024-11-01T08:58:50.644000Z"}]}}
 ```
 
 Create rate

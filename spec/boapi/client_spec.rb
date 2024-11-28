@@ -193,6 +193,42 @@ RSpec.describe 'Client' do
     end
   end
 
+  describe '.transactions_export' do
+    let(:response) do
+      Boapi::Client.new(account_id: account_id, account_secret: account_secret).transactions_export(params)
+    end
+
+    let(:url) { "#{Boapi.configuration.api_host}/api/v2/transactions/export" }
+
+    context 'when valid params given' do
+      let(:params) do
+        {
+          filter: {
+            status: 'successful',
+            date_from: '2024-11-01T00:00:00.000000',
+            date_to: '2024-11-02T00:00:00.000000',
+            type: 'p2p'
+          },
+          options: { limit: 1 }
+        }
+      end
+      let(:http_status) { 200 }
+
+      before do
+        stub_request(:post, url)
+          .to_return(status: http_status, body: TransactionFixtures.successful_transactions_export_response)
+      end
+
+      it 'returns successful response' do
+        expect(response.status).to be http_status
+
+        expect(response.success?).to be true
+        expect(response.error?).to be false
+        expect(response.data).to eq(TransactionFixtures.successful_transactions_export_response_message)
+      end
+    end
+  end
+
   describe '.merchant_balances_for_psp' do
     let(:response) do
       Boapi::Client.new(account_id: account_id, account_secret: account_secret)
