@@ -204,14 +204,11 @@ RSpec.describe 'Client' do
       let(:params) do
         {
           filter: {
-              status: 'successful',
-              date_from: '2024-11-01T00:00:00.000000',
-              date_to: '2024-11-02T00:00:00.000000',
-              'type': 'p2p'
-            },
-          options: {
-            limit: 1
-          }
+            status: 'successful',
+            date_from: '2024-11-01T00:00:00.000000',
+            date_to: '2024-11-02T00:00:00.000000',
+            type: 'p2p' },
+          options: { limit: 1 }
         }
       end
       let(:http_status) { 200 }
