@@ -207,7 +207,8 @@ RSpec.describe 'Client' do
             status: 'successful',
             date_from: '2024-11-01T00:00:00.000000',
             date_to: '2024-11-02T00:00:00.000000',
-            type: 'p2p' },
+            type: 'p2p'
+          },
           options: { limit: 1 }
         }
       end
