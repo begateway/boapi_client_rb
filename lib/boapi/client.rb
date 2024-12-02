@@ -36,8 +36,8 @@ module Boapi
       send_request(:post, '/api/v2/transactions/deep_search', params)
     end
 
-    def balances_by_currencies_for_psp(params)
-      send_request(:get, "/api/v2/psp/balances_by_currencies", params)
+    def balances_for_psp(params)
+      send_request(:get, "/api/v2/psp/balances", params)
     end
 
     def merchant_balances_for_psp(merchant_id, params)
