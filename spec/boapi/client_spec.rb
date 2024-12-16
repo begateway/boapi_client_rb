@@ -229,13 +229,12 @@ RSpec.describe 'Client' do
     end
   end
 
-  describe '.balances_for_psp' do
+  describe '.psp_balances' do
     let(:response) do
-      Boapi::Client.new(account_id: account_id, account_secret: account_secret)
-                   .balances_for_psp(params)
+      Boapi::Client.new(account_id: account_id, account_secret: account_secret).psp_balances(params)
     end
-    let(:http_status) { 200 }
 
+    let(:http_status) { 200 }
     let(:url) { "#{Boapi.configuration.api_host}/api/v2/psp/balances" }
 
     context 'when valid params given' do
@@ -245,37 +244,16 @@ RSpec.describe 'Client' do
         stub_request(:get, url).with(query: params)
                                .to_return(
                                  status: http_status,
-                                 body: BalancesFixtures.successful_balances_for_psp_response
+                                 body: BalancesFixtures.successful_psp_balances_response
                                )
-  end
-
-  describe '.merchant_balances_for_psp' do
-    let(:response) do
-      Boapi::Client.new(account_id: account_id, account_secret: account_secret)
-                   .merchant_balances_for_psp(merchant_id, params)
-    end
-    let(:http_status) { 200 }
-
-    let(:merchant_id) { '47' }
-    let(:url) { "#{Boapi.configuration.api_host}/api/v2/psp/merchants/#{merchant_id}/balances" }
-
-    context 'when valid params given' do
-      let(:params) { { currency: 'BYN', as_of_date: '2024-09-13T00:00:00.145823Z' } }
-
-      before do
-        stub_request(:get, url).with(query: params)
-                               .to_return(
-                                 status: http_status,
-                                 body: BalancesFixtures.successful_merchant_balances_for_psp_response
-                               )
-      end
+     end
 
       it 'returns successful response' do
         expect(response.status).to be http_status
 
         expect(response.success?).to be true
         expect(response.error?).to be false
-        expect(response.data).to eq(BalancesFixtures.successful_merchant_balances_for_psp_response_message)
+        expect(response.data).to eq(BalancesFixtures.successful_psp_balances_response_message)
       end
     end
   end
