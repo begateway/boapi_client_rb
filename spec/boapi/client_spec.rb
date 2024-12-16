@@ -229,6 +229,26 @@ RSpec.describe 'Client' do
     end
   end
 
+  describe '.balances_for_psp' do
+    let(:response) do
+      Boapi::Client.new(account_id: account_id, account_secret: account_secret)
+                   .balances_for_psp(params)
+    end
+    let(:http_status) { 200 }
+
+    let(:url) { "#{Boapi.configuration.api_host}/api/v2/psp/balances" }
+
+    context 'when valid params given' do
+      let(:params) { { merchant_id: 47, currency: 'BYN', as_of_date: '2024-09-13T00:00:00.145823Z' } }
+
+      before do
+        stub_request(:get, url).with(query: params)
+                               .to_return(
+                                 status: http_status,
+                                 body: BalancesFixtures.successful_balances_for_psp_response
+                               )
+  end
+
   describe '.merchant_balances_for_psp' do
     let(:response) do
       Boapi::Client.new(account_id: account_id, account_secret: account_secret)
