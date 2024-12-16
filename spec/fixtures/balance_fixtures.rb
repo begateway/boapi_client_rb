@@ -4,7 +4,7 @@
 module BalancesFixtures
   module_function
 
-  def successful_balances_for_psp_response_message
+  def successful_psp_balances_response_message
     {
       'balances' => {
         'generated_at' => '2024-08-30T13:02:00Z',
@@ -44,9 +44,10 @@ module BalancesFixtures
     }
   end
 
-  def successful_balances_for_psp_response
-    %({"data":#{successful_balances_for_psp_response_message.to_json}})
+  def successful_psp_balances_response
+    %({"data":#{successful_psp_balances_response_message.to_json}})
   end
+
   def successful_merchant_balances_for_psp_response_message
     {
       'balances' => {
