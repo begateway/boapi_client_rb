@@ -246,7 +246,7 @@ RSpec.describe 'Client' do
                                  status: http_status,
                                  body: BalancesFixtures.successful_psp_balances_response
                                )
-     end
+      end
 
       it 'returns successful response' do
         expect(response.status).to be http_status
