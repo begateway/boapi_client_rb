@@ -41,7 +41,7 @@ module Boapi
     end
 
     def psp_balances(params)
-      send_request(:get, "/api/v2/psp/balances", params)
+      send_request(:get, '/api/v2/psp/balances', params)
     end
 
     def merchant_balances(merchant_id, params)
