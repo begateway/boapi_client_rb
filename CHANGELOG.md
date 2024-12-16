@@ -1,5 +1,9 @@
 ## [Released]
 
+## [0.8.0] - 2024-12-16
+
+- Multi currencies balances
+
 ## [0.7.0] - 2024-10-30
 
 - Rename merchant balance for psp method

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    boapi (0.7.0)
+    boapi (0.8.0)
       faraday (> 0.7.6, < 1.0)
       faraday_middleware (> 0.1, < 1.0)
 
