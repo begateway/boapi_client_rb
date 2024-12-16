@@ -53,16 +53,22 @@ module BalancesFixtures
       'balances' => {
         'generated_at' => '2024-08-30T13:02:00Z',
         'as_of_date' => '2024-09-13T00:00:00.145823Z',
-        'currency' => 'BYN',
-        'merchant' => {
-          'id' => 47,
-          'company_name' => 'John Deere LTD',
-          'available_balance' => 300,
-          'shops' => [
-            { 'id' => 1, 'name' => 'Demo Shop 1', 'available_balance' => 200 },
-            { 'id' => 2, 'name' => 'Demo Shop 2', 'available_balance' => 100 }
-          ]
-        }
+        'currencies' => [
+          {
+            'currency' => 'BYN',
+            'merchants' => [
+              {
+                'id' => 47,
+                'company_name' => 'John Deere LTD',
+                'available_balance' => 300,
+                'shops' => [
+                  { 'id' => 1, 'name' => 'Demo Shop 1', 'available_balance' => 200 },
+                  { 'id' => 2, 'name' => 'Demo Shop 2', 'available_balance' => 100 }
+                ]
+              }
+            ]
+          }
+        ]
       }
     }
   end
