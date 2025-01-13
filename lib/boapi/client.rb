@@ -52,6 +52,10 @@ module Boapi
       send_request(:post, '/api/v2/balance_records', params)
     end
 
+    def preadjustments_surcharges_max(params)
+      send_request(:post, '/api/v2/preadjustments/surcharges/max', params)
+    end
+
     def create_rate(params)
       send_request(:post, rate_path, params)
     end

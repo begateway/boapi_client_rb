@@ -327,6 +327,39 @@ RSpec.describe 'Client' do
     end
   end
 
+  describe '.preadjustments_surcharges_max' do
+    let(:response) do
+      Boapi::Client.new(account_id: account_id, account_secret: account_secret).preadjustments_surcharges_max(params)
+    end
+
+    let(:url) { "#{Boapi.configuration.api_host}/api/v2/preadjustments/surcharges/max" }
+
+    context 'when valid params given' do
+      let(:params) do
+        {
+          transaction_type: 'payment',
+          initial_amount: 1000,
+          currency: 'BYN',
+          gateway_ids: ['123', '12345']
+        }
+      end
+      let(:http_status) { 200 }
+
+      before do
+        stub_request(:post, url)
+          .to_return(status: http_status, body: TransactionFixtures.successful_preadjustments_surcharges_max_response)
+      end
+
+      it 'returns successful response' do
+        expect(response.status).to be http_status
+
+        expect(response.success?).to be true
+        expect(response.error?).to be false
+        expect(response.data).to eq(TransactionFixtures.successful_preadjustments_surcharges_max_response_message)
+      end
+    end
+  end
+
   describe '.get_rate' do
     let(:response) do
       Boapi::Client.new(account_id: account_id, account_secret: account_secret).get_rate(uid)

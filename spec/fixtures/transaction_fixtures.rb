@@ -75,4 +75,34 @@ module TransactionFixtures
   def successful_transactions_export_response
     %({"data":#{successful_transactions_export_response_message.to_json}})
   end
+
+  # rubocop:disable Metrics/MethodLength
+  def successful_preadjustments_surcharges_max_response_message
+    {
+      'code' => 'S.0000',
+      'message' => 'Success.',
+      'friendly_message' => 'Request is successsfully processed.',
+      'data' => {
+        'id' => 'rt4t45-345tgrg-4tgrgrgb',
+        'created_at' => '2024-05-24T23:23:23.456789',
+        'type' => 'surcharge_max',
+        'transaction_type' => 'payment',
+        'currency' => 'BYN',
+        'initial_amount' => 1000,
+        'amount' => 50,
+        'info' => {
+          'surchant_max_amount' => 50,
+          'raw_calculations' => [
+            { 'gateway_id' => 123, 'rate_id' => 50, 'calculated_value' => 45, 'error' => nil },
+            { 'gateway_id' => 12345, 'rate_id' => nil, 'calculated_value' => nil, 'error' => 'rate_not_found' }
+          ]
+        }
+      }
+    }
+  end
+  # rubocop:enable Metrics/MethodLength
+
+  def successful_preadjustments_surcharges_max_response
+    %({"data":#{successful_preadjustments_surcharges_max_response_message.to_json}})
+  end
 end
