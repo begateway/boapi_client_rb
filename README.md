@@ -185,6 +185,17 @@ response.status
 # 204
 ```
 
+Preadjustments surcharge max with response params
+
+```ruby
+params = { transaction_type: 'payment', initial_amount: 1000, currency: 'BYN', gateway_ids: ['123', '12345'] }
+response = client.preadjustments_surcharges_max(params)
+response.status   # 200
+response.success? # true
+response.data
+# {'code' => 'S.0000', 'message' => 'Success.', 'friendly_message' => 'Request is successsfully processed.', 'data' => { 'id' => 'rt4t45-345tgrg-4tgrgrgb', 'created_at' => '2024-05-24T23:23:23.456789', 'type' => 'surcharge_max', 'transaction_type' => 'payment', 'currency' => 'BYN', 'initial_amount' => 1000, 'amount' => 50, 'info' => {'surchant_max_amount' => 50, 'raw_calculations' => [{ 'gateway_id' => 123, 'rate_id' => 50, 'calculated_value' => 45, 'error' => nil }, { 'gateway_id' => 12345, 'rate_id' => nil, 'calculated_value' => nil, 'error' => 'rate_not_found' }]}}}
+```
+
 Create balance_record (adjustment type only)
 
 ```ruby
