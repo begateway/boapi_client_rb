@@ -340,7 +340,7 @@ RSpec.describe 'Client' do
           transaction_type: 'payment',
           initial_amount: 1000,
           currency: 'BYN',
-          gateway_ids: ['123', '12345']
+          gateway_ids: %w[123 12345]
         }
       end
       let(:http_status) { 200 }

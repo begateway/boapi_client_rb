@@ -4,6 +4,7 @@ require 'faraday'
 require 'faraday_middleware'
 
 module Boapi
+  # rubocop:disable Metrics/ClassLength
   class Client
     attr_reader :account_id, :account_secret
 
@@ -139,4 +140,5 @@ module Boapi
 
     # rubocop:enable Metrics/MethodLength
   end
+  # rubocop:enable Metrics/ClassLength
 end

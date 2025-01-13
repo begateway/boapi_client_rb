@@ -94,7 +94,7 @@ module TransactionFixtures
           'surchant_max_amount' => 50,
           'raw_calculations' => [
             { 'gateway_id' => 123, 'rate_id' => 50, 'calculated_value' => 45, 'error' => nil },
-            { 'gateway_id' => 12345, 'rate_id' => nil, 'calculated_value' => nil, 'error' => 'rate_not_found' }
+            { 'gateway_id' => 345, 'rate_id' => nil, 'calculated_value' => nil, 'error' => 'rate_not_found' }
           ]
         }
       }
