@@ -241,11 +241,8 @@ RSpec.describe 'Client' do
       let(:params) { { merchant_id: 47, currency: 'BYN', as_of_date: '2024-09-13T00:00:00.145823Z' } }
 
       before do
-        stub_request(:get, url).with(query: params)
-                               .to_return(
-                                 status: http_status,
-                                 body: BalancesFixtures.successful_psp_balances_response
-                               )
+        stub_request(:post, url)
+          .to_return(status: http_status, body: BalancesFixtures.successful_psp_balances_response)
       end
 
       it 'returns successful response' do
@@ -271,11 +268,8 @@ RSpec.describe 'Client' do
       let(:params) { { currency: 'BYN', as_of_date: '2024-09-13T00:00:00.145823Z' } }
 
       before do
-        stub_request(:get, url).with(query: params)
-                               .to_return(
-                                 status: http_status,
-                                 body: BalancesFixtures.successful_merchant_balances_response
-                               )
+        stub_request(:post, url)
+          .to_return(status: http_status, body: BalancesFixtures.successful_merchant_balances_response)
       end
 
       it 'returns successful response' do

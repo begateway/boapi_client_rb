@@ -1,5 +1,9 @@
 ## [Released]
 
+## [0.9.0] - 2025-02-19
+
+- Change get_balances method
+
 ## [0.8.0] - 2024-12-16
 
 - Multi currencies balances
