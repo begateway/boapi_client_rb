@@ -1,8 +1,12 @@
 ## [Released]
 
-## [0.9.0] - 2025-02-19
+## [0.10.0] - 2025-02-19
 
 - Change get_balances method
+
+## [0.9.0] - 2025-01-13
+
+- Add preadjustments request
 
 ## [0.8.0] - 2024-12-16
 
