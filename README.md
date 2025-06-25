@@ -224,6 +224,15 @@ response.data
 # {"balances"=>{"generated_at"=>"2024-08-30T13:02:00Z", "as_of_date"=>"2024-09-13T00:00:00.145823Z", "currencies"=>[{"currency"=>"BYN", "merchants"=>[{"id"=>47, "company_name"=>"John Deere LTD", "available_balance"=>100, "shops"=>[{ ...
 ```
 
+Create report
+```ruby
+params = { user_id: 1, type: 'balance_records_report', format: 'csv', 
+           request_params: { currency: 'USD', merchant_id: 12, date_from: '2025-01-01T00:00:00', date_to: '2025-03-16T23:59:59' } }
+client.create_report(params)
+response.data
+# "{\"data\":{\"report\":{\"id\":\"961c3be2-c7b0-44ab-9f79-48cabd30c519\",\"status\":\"pending\",\"type\":\"balance_records_report\",\"format\":\"csv\",\"engine\":\"oban\",\"user_id\":1,\"language\":\"en\",\"updated_at\":\"2025-06-25T13:41:38.976093Z\",\"created_at\":\"2025-06-25T13:41:38.976093Z\",\"psp_id\":1,\"generated_at\":null,\"expiry_date\":null,\"file_url\":null,\"notification_email\":null,\"request_params\":{...}}}}"
+```
+
 ## Errors
 
 Unauthorized
