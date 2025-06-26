@@ -81,6 +81,10 @@ module Boapi
       send_request(:delete, rate_path(id))
     end
 
+    def create_report(params)
+      send_request(:post, '/api/v2/reports', params)
+    end
+
     def send_request(method, path, params = nil)
       response =
         begin

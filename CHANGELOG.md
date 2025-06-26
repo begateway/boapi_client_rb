@@ -1,5 +1,9 @@
 ## [Released]
 
+## [0.11.0] - 2025-06-25
+
+- Add create report request
+
 ## [0.10.0] - 2025-02-19
 
 - Change get_balances method

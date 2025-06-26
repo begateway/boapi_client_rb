@@ -528,4 +528,45 @@ RSpec.describe 'Client' do
       end
     end
   end
+
+  describe '.create_report' do
+    let(:response) do
+      Boapi::Client.new(account_id: account_id, account_secret: account_secret).create_report(params)
+    end
+    let(:http_status) { 201 }
+
+    let(:url) { "#{Boapi.configuration.api_host}/api/v2/reports" }
+    let(:report_request_params) do
+      {
+        date_from: '2025-01-01T00:00:00+00:00',
+        date_to: '2025-03-16T23:59:59+00:00',
+        currency: 'USD',
+        merchant_id: 12,
+        shop_id: 12,
+        gateway_id: 12
+      }
+    end
+    let(:params) do
+      {
+        id: '961c3be2-c7b0-44ab-9f79-48cabd30c519',
+        user_id: 1,
+        type: 'balance_records_report',
+        format: 'csv',
+        request_params: report_request_params
+      }
+    end
+
+    before do
+      stub_request(:post, url).with(body: params.to_json)
+                              .to_return(status: http_status, body: ReportFixtures.successful_create_report_response)
+    end
+
+    it 'returns successful response' do
+      expect(response.status).to be http_status
+
+      expect(response.success?).to be true
+      expect(response.error?).to be false
+      expect(response.data).to eq(ReportFixtures.successful_create_report_response_message)
+    end
+  end
 end
