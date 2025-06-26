@@ -1,5 +1,9 @@
 ## [Released]
 
+## [0.12.0] - 2025-06-26
+
+- Add timeout error
+
 ## [0.11.0] - 2025-06-25
 
 - Add create report request

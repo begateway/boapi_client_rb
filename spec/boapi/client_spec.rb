@@ -24,6 +24,42 @@ RSpec.describe 'Client' do
     end
   end
 
+  context 'when connection error' do
+    let(:response) { Boapi::Client.new(account_id: account_id, account_secret: account_secret).health }
+    let(:url) { "#{Boapi.configuration.api_host}/api/health" }
+
+    before do
+      stub_request(:get, url)
+        .to_raise(Faraday::ConnectionFailed.new('Failed to connect'))
+    end
+
+    it 'returns connection_failed response' do
+      expect(response.status).to be 502
+
+      expect(response.success?).to be false
+      expect(response.error?).to be true
+      expect(response.error).to eq SupportFixtures.bad_gateway_response
+    end
+  end
+
+  context 'when timeout error' do
+    let(:response) { Boapi::Client.new(account_id: account_id, account_secret: account_secret).health }
+    let(:url) { "#{Boapi.configuration.api_host}/api/health" }
+
+    before do
+      stub_request(:get, url)
+        .to_raise(Faraday::TimeoutError.new('Timeout'))
+    end
+
+    it 'returns connection_failed response' do
+      expect(response.status).to be 504
+
+      expect(response.success?).to be false
+      expect(response.error?).to be true
+      expect(response.error).to eq SupportFixtures.gateway_timeout_response
+    end
+  end
+
   describe '.health' do
     let(:response) { Boapi::Client.new(account_id: account_id, account_secret: account_secret).health }
     let(:http_status) { 200 }

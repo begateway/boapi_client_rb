@@ -21,4 +21,20 @@ module SupportFixtures
   def failed_without_authentification_response
     %({"error":#{failed_without_authentification_response_message.to_json}})
   end
+
+  def bad_gateway_response
+    {
+      'code' => 'bad_gateway',
+      'friendly_message' => 'Connection error',
+      'message' => 'Failed to connect'
+    }
+  end
+
+  def gateway_timeout_response
+    {
+      'code' => 'gateway_timeout',
+      'friendly_message' => 'ReadTimeout error occurred',
+      'message' => 'Timeout'
+    }
+  end
 end
