@@ -85,12 +85,22 @@ module Boapi
       send_request(:post, '/api/v2/reports', params)
     end
 
+    # rubocop:disable Metrics/AbcSize
+    # rubocop:disable Metrics/MethodLength
     def send_request(method, path, params = nil)
       response =
         begin
           connection.public_send(method, path, params) do |request|
             request.headers['Content-Type'] = 'application/json' if %i[post put patch].include?(method)
           end
+        rescue Faraday::ConnectionFailed => e
+          Boapi.configuration.logger.error("BOAPI::CLIENT::FARADAY::ERROR::CONNECTION_FAILED :: #{e}")
+
+          build_connection_error_body(e)
+        rescue Faraday::TimeoutError => e
+          Boapi.configuration.logger.error("BOAPI::CLIENT::FARADAY::ERROR::READ_TIMEOUT :: #{e}")
+
+          build_read_timeout_error_body(e)
         rescue Faraday::Error => e
           Boapi.configuration.logger.error("BOAPI::CLIENT::FARADAY::ERROR :: #{e}")
 
@@ -100,6 +110,8 @@ module Boapi
       Boapi::Response.new(response)
     end
 
+    # rubocop:enable Metrics/AbcSize
+    # rubocop:enable Metrics/MethodLength
     def connection
       @connection ||= build_connection
     end
@@ -135,6 +147,34 @@ module Boapi
           'error' => {
             'code' => 'faraday_error',
             'friendly_message' => "We're sorry, but something went wrong",
+            'message' => error_message.to_s
+          }
+        },
+        success?: false
+      )
+    end
+
+    def build_read_timeout_error_body(error_message)
+      Struct.new(:status, :success?, :body, keyword_init: true).new(
+        status: 504,
+        body: {
+          'error' => {
+            'code' => 'gateway_timeout',
+            'friendly_message' => 'ReadTimeout error occurred',
+            'message' => error_message.to_s
+          }
+        },
+        success?: false
+      )
+    end
+
+    def build_connection_error_body(error_message)
+      Struct.new(:status, :success?, :body, keyword_init: true).new(
+        status: 502,
+        body: {
+          'error' => {
+            'code' => 'bad_gateway',
+            'friendly_message' => 'Connection error',
             'message' => error_message.to_s
           }
         },
