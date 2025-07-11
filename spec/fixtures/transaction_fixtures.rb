@@ -25,9 +25,9 @@ module TransactionFixtures
   # rubocop:disable Metrics/MethodLength
   def successful_transactions_list_response_message
     { 'pagination' => {
-        'date_from' => '2023-02-20T09:02:54.516000Z', 'date_to' => '2023-02-20T11:13:43.748000Z',
-        'date_type' => 'created_at', 'has_next_page' => true, 'next_date' => '2023-02-20T11:21:05.639000Z'
-      },
+      'date_from' => '2023-02-20T09:02:54.516000Z', 'date_to' => '2023-02-20T11:13:43.748000Z',
+      'date_type' => 'created_at', 'has_next_page' => true, 'next_date' => '2023-02-20T11:21:05.639000Z'
+    },
       'transactions' => [
         { 'amount' => 200, 'created_at' => '2023-02-20T09:02:54.516000Z', 'currency' => 'BYN',
           'merchant_id' => 55, 'paid_at' => '2023-02-20T09:02:59.669000Z', 'shop_id' => 296,
@@ -40,6 +40,7 @@ module TransactionFixtures
           'type' => 'tokenization', 'uid' => 'a1b993aa-d340-4d52-a0ce-92e5a30ab6a6' }
       ] }
   end
+
   # rubocop:enable Metrics/MethodLength
 
   def successful_transactions_list_response
@@ -70,6 +71,38 @@ module TransactionFixtures
       }
     }
   end
+
+  # rubocop:enable Metrics/MethodLength
+
+  def successful_transactions_uids_export_response
+    %({"data":#{successful_transactions_uids_export_response_message.to_json}})
+  end
+
+  # rubocop:disable Metrics/MethodLength
+  def successful_transactions_uids_export_response_message
+    [
+      {
+        'amount' => 123,
+        'closed_at' => nil,
+        'code' => 'S.0000',
+        'created_at' => '2025-06-19T10:47:19.959000Z',
+        'currency' => 'BYN',
+        'description' => 'Transaction with test flag',
+        'expired_at' => nil,
+        'fraud' => '',
+        'friendly_message' => 'The transaction is successfully processed.',
+        'language' => 'en',
+        'manually_corrected_at' => nil,
+        'merchant_id' => 222,
+        'message' => 'Transaction is successful.',
+        'paid_at' => nil,
+        'type' => 'fraud_advice',
+        'uid' => '2362e0a1-4444-3333-2222-8a02222965b9',
+        'updated_at' => '2025-06-19T10:47:20.082000Z'
+      }
+    ]
+  end
+
   # rubocop:enable Metrics/MethodLength
 
   def successful_transactions_export_response
@@ -100,6 +133,7 @@ module TransactionFixtures
       }
     }
   end
+
   # rubocop:enable Metrics/MethodLength
 
   def successful_preadjustments_surcharges_max_response

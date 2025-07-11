@@ -173,6 +173,39 @@ RSpec.describe 'Client' do
     end
   end
 
+  describe '.transactions_uids_export' do
+    let(:response) do
+      Boapi::Client.new(account_id: account_id, account_secret: account_secret).transactions_uids_export(params)
+    end
+
+    let(:url) { "#{Boapi.configuration.api_host}/api/v2/transactions/uids_export" }
+
+    context 'when valid params given' do
+      let(:params) do
+        {
+          response_parameters: 'main',
+          filter: {
+            uids: ['2362e0a1-6b5c-4128-9169-8a02122965b9']
+          }
+        }
+      end
+      let(:http_status) { 200 }
+
+      before do
+        stub_request(:post, url)
+          .to_return(status: http_status, body: TransactionFixtures.successful_transactions_uids_export_response)
+      end
+
+      it 'returns successful response' do
+        expect(response.status).to be http_status
+
+        expect(response.success?).to be true
+        expect(response.error?).to be false
+        expect(response.data).to eq(TransactionFixtures.successful_transactions_uids_export_response_message)
+      end
+    end
+  end
+
   describe '.transactions_search' do
     let(:response) do
       Boapi::Client.new(account_id: account_id, account_secret: account_secret).transactions_search(params)
