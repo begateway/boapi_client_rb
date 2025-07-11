@@ -41,6 +41,10 @@ module Boapi
       send_request(:post, '/api/v2/transactions/export', params)
     end
 
+    def transactions_uids_export(params)
+      send_request(:post, '/api/v2/transactions/uids_export', params)
+    end
+
     def psp_balances(params)
       send_request(:post, '/api/v2/psp/balances', params)
     end
