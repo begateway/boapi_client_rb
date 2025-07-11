@@ -1,6 +1,10 @@
 ## [Released]
 
-## [0.13.0] - 2025-08-1
+## [0.14.0] - 2026-03-18
+
+- Add uids_export request
+
+## [0.13.0] - 2025-08-01
 
 - Add aggregation request
 
