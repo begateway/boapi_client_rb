@@ -1,5 +1,9 @@
 ## [Released]
 
+## [0.13.0] - 2025-07-11
+
+- Add uids_export request
+
 ## [0.12.0] - 2025-06-26
 
 - Add timeout error
