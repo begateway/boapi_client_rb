@@ -10,6 +10,7 @@ require 'fixtures/transaction_fixtures'
 require 'fixtures/balance_fixtures'
 require 'fixtures/balance_record_fixtures'
 require 'fixtures/report_fixtures'
+require 'fixtures/aggregation_fixtures'
 
 WebMock.disable_net_connect!(allow_localhost: false)
 

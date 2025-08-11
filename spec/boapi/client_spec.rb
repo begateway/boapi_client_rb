@@ -605,4 +605,45 @@ RSpec.describe 'Client' do
       expect(response.data).to eq(ReportFixtures.successful_create_report_response_message)
     end
   end
+
+  describe '.create_aggregation' do
+    let(:response) do
+      Boapi::Client.new(account_id: account_id, account_secret: account_secret).reports_aggregation(params)
+    end
+    let(:http_status) { 201 }
+
+    let(:url) { "#{Boapi.configuration.api_host}/api/v2/reports/aggregation" }
+
+    let(:params) do
+      {
+        type: "credit_card",
+        language: "en",
+        format: "csv",
+        date_from: '2025-01-01T00:00:00+00:00',
+        date_to: '2025-03-16T23:59:59+00:00',
+        date_type: "created_at",
+        group_by: nil,
+        transaction_parameters: {
+          gateway_type: [
+            "Bapb", "Bgpb"
+          ],
+          currency: "all",
+          type: ["p2p","payment","capture"]
+        }
+      }
+    end
+
+    before do
+      stub_request(:post, url).with(body: params.to_json)
+                              .to_return(status: http_status, body: AggregationFixtures.successful_create_aggregation_response)
+    end
+
+    it 'returns successful response' do
+      expect(response.status).to be http_status
+
+      expect(response.success?).to be true
+      expect(response.error?).to be false
+      expect(response.data).to eq(AggregationFixtures.successful_create_aggregation_response_message)
+    end
+  end
 end

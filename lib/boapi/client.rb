@@ -85,6 +85,10 @@ module Boapi
       send_request(:post, '/api/v2/reports', params)
     end
 
+    def reports_aggregation(params)
+      send_request(:post, '/api/v2/reports/aggregation', params)
+    end
+
     # rubocop:disable Metrics/AbcSize
     # rubocop:disable Metrics/MethodLength
     def send_request(method, path, params = nil)
