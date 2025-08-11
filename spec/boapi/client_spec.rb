@@ -624,18 +624,16 @@ RSpec.describe 'Client' do
         date_type: 'created_at',
         group_by: nil,
         transaction_parameters: {
-          gateway_type: [
-            'Bapb', 'Bgpb'
-          ],
+          gateway_type: %w[Bapb Bgpb],
           currency: 'all',
-          type: ['p2p','payment','capture']
+          type: %w[p2p payment capture]
         }
       }
     end
 
     before do
       stub_request(:post, url).with(body: params.to_json)
-                              .to_return(status: http_status, body: AggregationFixtures.successful_create_aggregation_response)
+        .to_return(status: http_status, body: AggregationFixtures.successful_create_aggregation_response)
     end
 
     it 'returns successful response' do
