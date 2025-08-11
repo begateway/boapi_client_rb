@@ -633,7 +633,10 @@ RSpec.describe 'Client' do
 
     before do
       stub_request(:post, url).with(body: params.to_json)
-        .to_return(status: http_status, body: AggregationFixtures.successful_create_aggregation_response)
+                              .to_return(
+                                status: http_status,
+                                body: AggregationFixtures.successful_create_aggregation_response
+                              )
     end
 
     it 'returns successful response' do

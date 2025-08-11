@@ -51,7 +51,7 @@ module AggregationFixtures
           'volume' => 486.1
         }
       ],
-      'total_count' => 46892
+      'total_count' => 46_892
     }
   end
 
