@@ -616,19 +616,19 @@ RSpec.describe 'Client' do
 
     let(:params) do
       {
-        type: "credit_card",
-        language: "en",
-        format: "csv",
+        type: 'credit_card',
+        language: 'en',
+        format: 'csv',
         date_from: '2025-01-01T00:00:00+00:00',
         date_to: '2025-03-16T23:59:59+00:00',
-        date_type: "created_at",
+        date_type: 'created_at',
         group_by: nil,
         transaction_parameters: {
           gateway_type: [
-            "Bapb", "Bgpb"
+            'Bapb', 'Bgpb'
           ],
-          currency: "all",
-          type: ["p2p","payment","capture"]
+          currency: 'all',
+          type: ['p2p','payment','capture']
         }
       }
     end
