@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/MethodLength
 module TransactionFixtures
   module_function
 
@@ -22,12 +23,14 @@ module TransactionFixtures
     %({"error":#{failed_transactions_count_response_message.to_json}})
   end
 
-  # rubocop:disable Metrics/MethodLength
   def successful_transactions_list_response_message
     { 'pagination' => {
-      'date_from' => '2023-02-20T09:02:54.516000Z', 'date_to' => '2023-02-20T11:13:43.748000Z',
-      'date_type' => 'created_at', 'has_next_page' => true, 'next_date' => '2023-02-20T11:21:05.639000Z'
-    },
+        'date_from' => '2023-02-20T09:02:54.516000Z',
+        'date_to' => '2023-02-20T11:13:43.748000Z',
+        'date_type' => 'created_at',
+        'has_next_page' => true,
+        'next_date' => '2023-02-20T11:21:05.639000Z'
+      },
       'transactions' => [
         { 'amount' => 200, 'created_at' => '2023-02-20T09:02:54.516000Z', 'currency' => 'BYN',
           'merchant_id' => 55, 'paid_at' => '2023-02-20T09:02:59.669000Z', 'shop_id' => 296,
@@ -41,13 +44,10 @@ module TransactionFixtures
       ] }
   end
 
-  # rubocop:enable Metrics/MethodLength
-
   def successful_transactions_list_response
     %({"data":#{successful_transactions_list_response_message.to_json}})
   end
 
-  # rubocop:disable Metrics/MethodLength
   def successful_transactions_export_response_message
     {
       'transactions' => [
@@ -72,13 +72,10 @@ module TransactionFixtures
     }
   end
 
-  # rubocop:enable Metrics/MethodLength
-
   def successful_transactions_uids_export_response
     %({"data":#{successful_transactions_uids_export_response_message.to_json}})
   end
 
-  # rubocop:disable Metrics/MethodLength
   def successful_transactions_uids_export_response_message
     [
       {
@@ -103,13 +100,10 @@ module TransactionFixtures
     ]
   end
 
-  # rubocop:enable Metrics/MethodLength
-
   def successful_transactions_export_response
     %({"data":#{successful_transactions_export_response_message.to_json}})
   end
 
-  # rubocop:disable Metrics/MethodLength
   def successful_preadjustments_surcharges_max_response_message
     {
       'code' => 'S.0000',
@@ -134,9 +128,8 @@ module TransactionFixtures
     }
   end
 
-  # rubocop:enable Metrics/MethodLength
-
   def successful_preadjustments_surcharges_max_response
     %({"data":#{successful_preadjustments_surcharges_max_response_message.to_json}})
   end
 end
+# rubocop:enable Metrics/MethodLength
