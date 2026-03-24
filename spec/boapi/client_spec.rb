@@ -639,6 +639,31 @@ RSpec.describe 'Client' do
     end
   end
 
+  describe '.get_report' do
+    let(:response) do
+      Boapi::Client.new(account_id: account_id, account_secret: account_secret).get_report(uid)
+    end
+    let(:http_status) { 200 }
+
+    let(:uid) { '961c3be2-c7b0-44ab-9f79-48cabd30c519' }
+    let(:url) { "#{Boapi.configuration.api_host}/api/v2/reports/#{uid}" }
+
+    context 'when valid params given' do
+      before do
+        stub_request(:get, url)
+          .to_return(status: http_status, body: ReportFixtures.successful_get_report_response)
+      end
+
+      it 'returns successful response' do
+        expect(response.status).to be http_status
+
+        expect(response.success?).to be true
+        expect(response.error?).to be false
+        expect(response.data).to eq(ReportFixtures.successful_get_report_message)
+      end
+    end
+  end
+
   describe '.create_aggregation' do
     let(:response) do
       Boapi::Client.new(account_id: account_id, account_secret: account_secret).reports_aggregation(params)

@@ -233,6 +233,13 @@ response.data
 # "{\"data\":{\"report\":{\"id\":\"961c3be2-c7b0-44ab-9f79-48cabd30c519\",\"status\":\"pending\",\"type\":\"balance_records_report\",\"format\":\"csv\",\"engine\":\"oban\",\"user_id\":1,\"language\":\"en\",\"updated_at\":\"2025-06-25T13:41:38.976093Z\",\"created_at\":\"2025-06-25T13:41:38.976093Z\",\"psp_id\":1,\"generated_at\":null,\"expiry_date\":null,\"file_url\":null,\"notification_email\":null,\"request_params\":{...}}}}"
 ```
 
+Get report
+```ruby
+client.get_report(report_id)
+response.data
+# "{\"data\":{\"report\":{\"id\":\"961c3be2-c7b0-44ab-9f79-48cabd30c519\",\"status\":\"successful\",\"type\":\"balance_records_report\",\"format\":\"csv\",\"engine\":\"oban\",\"user_id\":1,\"language\":\"en\",\"updated_at\":\"2025-06-25T13:41:38.976093Z\",\"created_at\":\"2025-06-25T13:41:38.976093Z\",\"psp_id\":1,\"generated_at\":null,\"expiry_date\":null,\"file_url\":https://s3.eu-west-1.amazonaws.com/wlsexports-test\"notification_email\":null,\"request_params\":{...}}}}"
+```
+
 ## Errors
 
 Unauthorized

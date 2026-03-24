@@ -89,6 +89,10 @@ module Boapi
       send_request(:post, '/api/v2/reports', params)
     end
 
+    def get_report(id)
+      send_request(:get, "/api/v2/reports/#{id}")
+    end
+
     def reports_aggregation(params)
       send_request(:post, '/api/v2/reports/aggregation', params)
     end

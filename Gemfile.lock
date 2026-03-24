@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    boapi (0.14.0)
+    boapi (0.15.0)
       faraday (> 0.7.6, < 1.0)
       faraday_middleware (> 0.1, < 1.0)
 
@@ -88,4 +88,4 @@ DEPENDENCIES
   webmock (~> 3.18.1)
 
 BUNDLED WITH
-   2.4.5
+   2.4.22
